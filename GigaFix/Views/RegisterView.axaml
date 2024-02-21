@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:GigaFix.ViewModels"
+             x:DataType="vm:RegisterViewModel"
+             x:Class="GigaFix.Views.RegisterView">
+    <StackPanel Spacing="6" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBox Watermark="ФИО" HorizontalAlignment="Stretch"/>
+        <TextBox Watermark="Логин" HorizontalAlignment="Stretch"/>
+        <TextBox PasswordChar="*" Watermark="Пароль" HorizontalAlignment="Stretch"/>
+        <Button Command="{Binding Register}" Content="Регистрация" Margin="5, 0" Classes="Rounded Flat" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+    </StackPanel>
+</UserControl>

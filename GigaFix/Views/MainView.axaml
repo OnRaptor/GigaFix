@@ -2,7 +2,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             xmlns:i="https://github.com/projektanker/icons.avalonia"            
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:GigaFix.ViewModels"
+             x:DataType="vm:MainViewModel"
              x:Class="GigaFix.Views.MainView">
-  Main
+    <suki:SukiSideMenu ItemsSource="{Binding Views}">
+        <suki:SukiSideMenu.HeaderContent>
+            <suki:GlassCard Margin="0,0,0,40" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="5">
+                    <i:Icon FontSize="20" Value="mdi-account"></i:Icon>
+                    <TextBlock Text="Мухаметов И.Р" TextWrapping="WrapWithOverflow"/>
+                </StackPanel>
+            </suki:GlassCard>
+        </suki:SukiSideMenu.HeaderContent>
+        <suki:SukiSideMenu.ItemTemplate>
+            <DataTemplate>
+                <suki:SukiSideMenuItem Header="{Binding Title}">
+                    <suki:SukiSideMenuItem.Icon>
+                        <i:Icon FontSize="20" Value="{Binding IconName}" />
+                    </suki:SukiSideMenuItem.Icon>
+                </suki:SukiSideMenuItem>
+            </DataTemplate>
+        </suki:SukiSideMenu.ItemTemplate>
+    </suki:SukiSideMenu>
 </UserControl>

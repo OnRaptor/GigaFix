@@ -6,10 +6,9 @@ namespace GigaFix.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        [ObservableProperty]
-        public PageViewModel currentViewModel;
-        [ObservableProperty]
-        public bool canNavigateBack;
+        [ObservableProperty]public PageViewModel currentViewModel;
+        [ObservableProperty]public bool canNavigateBack;
+        [ObservableProperty]public bool isTopPanelVisible = true;
 
         private Stack viewsStack = new Stack();
         public MainWindowViewModel(NavigationService ns, LoginViewModel loginVm)
@@ -21,6 +20,10 @@ namespace GigaFix.ViewModels
                 CurrentViewModel = e;
                 viewsStack.Push(e);
                 CanNavigateBack = true;
+            };
+            ns.SetTopPanelVisibility = (e) =>
+            {
+                IsTopPanelVisible = e;
             };
         }
 

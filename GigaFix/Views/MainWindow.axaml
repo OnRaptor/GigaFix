@@ -1,48 +1,37 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:GigaFix.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="GigaFix.Views.MainWindow"
-		x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-		TransparencyLevelHint="AcrylicBlur"
-        Background="Transparent"
-		ExtendClientAreaToDecorationsHint="True"
-		FontFamily="Tw Cen MT"
-        Title="GigaFix">
-
-   
-
-	<Panel>
-		<ExperimentalAcrylicBorder IsHitTestVisible="False">
-			<ExperimentalAcrylicBorder.Material>
-				<ExperimentalAcrylicMaterial
-					BackgroundSource="Digger"
-					TintColor="White"
-					TintOpacity="1"
-					MaterialOpacity="0.5" />
-			</ExperimentalAcrylicBorder.Material>
-		</ExperimentalAcrylicBorder>
-
-		<Grid>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="30"/>
-				<RowDefinition/>
-			</Grid.RowDefinitions>
-
-			<Button Background="Transparent" IsVisible="{Binding CanNavigateBack}" FontSize="9" Command="{Binding NavigateBack}">
-				<PathIcon>
-					<PathIcon.Data>
-						<StreamGeometry>M31.8839 8.36612C32.372 8.85427 32.372 9.64573 31.8839 10.1339L18.0178 24L31.8839 37.8661C32.372 38.3543 32.372 39.1457 31.8839 39.6339C31.3957 40.122 30.6043 40.122 30.1161 39.6339L15.3661 24.8839C14.878 24.3957 14.878 23.6043 15.3661 23.1161L30.1161 8.36612C30.6043 7.87796 31.3957 7.87796 31.8839 8.36612Z</StreamGeometry>
-					</PathIcon.Data>
-				</PathIcon>
-			</Button>
-			
-			<TextBlock Text="{Binding CurrentViewModel.Title}" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-			<TransitioningContentControl Grid.Row="1" Margin="10" Content="{Binding CurrentViewModel}"/>
-		</Grid>
-    </Panel>
-</Window>
+<suki:SukiWindow xmlns="https://github.com/avaloniaui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:vm="using:GigaFix.ViewModels"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+                 x:Class="GigaFix.Views.MainWindow"
+                 x:DataType="vm:MainWindowViewModel"
+                 xmlns:convertors="clr-namespace:GigaFix.Convertors;assembly=GigaFix"
+                 Icon="/Assets/icon.ico"
+                 xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+                 FontFamily="Tw Cen MT"
+                 Title="GigaFix">
+	<suki:SukiWindow.LogoContent>
+		<Image Width="25" Source="/Assets/icon.ico"/>
+	</suki:SukiWindow.LogoContent>
+	<suki:SukiWindow.Resources>
+		<convertors:BoolToHeightConvertor x:Key="BoolToHeightConvertor"></convertors:BoolToHeightConvertor>
+	</suki:SukiWindow.Resources>
+		<DockPanel LastChildFill="True">
+			<Grid DockPanel.Dock="Top" Height="40" IsVisible="{Binding IsTopPanelVisible}">
+				<Button Width="60" Classes="Rounded Outlined" HorizontalAlignment="Left" IsVisible="{Binding CanNavigateBack}" FontSize="9" Command="{Binding NavigateBack}">
+					<PathIcon>
+						<PathIcon.Data>
+							<StreamGeometry>M31.8839 8.36612C32.372 8.85427 32.372 9.64573 31.8839 10.1339L18.0178 24L31.8839 37.8661C32.372 38.3543 32.372 39.1457 31.8839 39.6339C31.3957 40.122 30.6043 40.122 30.1161 39.6339L15.3661 24.8839C14.878 24.3957 14.878 23.6043 15.3661 23.1161L30.1161 8.36612C30.6043 7.87796 31.3957 7.87796 31.8839 8.36612Z</StreamGeometry>
+						</PathIcon.Data>
+					</PathIcon>
+				</Button>
+				<TextBlock Text="{Binding CurrentViewModel.Title}" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Grid>
+			<TransitioningContentControl Content="{Binding CurrentViewModel}">
+				<TransitioningContentControl.PageTransition>
+					<CrossFade Duration="0:00:00.5"></CrossFade>
+				</TransitioningContentControl.PageTransition>
+			</TransitioningContentControl>
+		</DockPanel>
+</suki:SukiWindow>

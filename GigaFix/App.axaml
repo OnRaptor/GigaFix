@@ -1,21 +1,23 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="GigaFix.App"
-             xmlns:local="using:GigaFix"    
+             xmlns:local="using:GigaFix"
+             xmlns:sukiUi="clr-namespace:SukiUI;assembly=SukiUI"
              RequestedThemeVariant="Light">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
-        <local:ViewLocator/>
+        <local:ViewLocator />
     </Application.DataTemplates>
-  
+
     <Application.Styles>
-		<FluentTheme>
+        <!--<FluentTheme>
 			<FluentTheme.Palettes>
 				<ColorPaletteResources x:Key="Light" Accent="#fffdbd40" AltHigh="White" AltLow="White" AltMedium="White" AltMediumHigh="White" AltMediumLow="White" BaseHigh="Black" BaseLow="#ffb0e5fd" BaseMedium="#ff55a0bd" BaseMediumHigh="#ff187292" BaseMediumLow="#ff3689a7" ChromeAltLow="#ff187292" ChromeBlackHigh="Black" ChromeBlackLow="#ffb0e5fd" ChromeBlackMedium="#ff187292" ChromeBlackMediumLow="#ff55a0bd" ChromeDisabledHigh="#ffb0e5fd" ChromeDisabledLow="#ff55a0bd" ChromeGray="#ff3689a7" ChromeHigh="#ffb0e5fd" ChromeLow="#ffd4f8ff" ChromeMedium="#ffcdf4ff" ChromeMediumLow="#ffd4f8ff" ChromeWhite="White" ListLow="#ffcdf4ff" ListMedium="#ffb0e5fd" RegionColor="White" />
 				<ColorPaletteResources x:Key="Dark" Accent="#fffdbd40" AltHigh="Black" AltLow="Black" AltMedium="Black" AltMediumHigh="Black" AltMediumLow="Black" BaseHigh="White" BaseLow="#ffb0e5fd" BaseMedium="#ffcdf4ff" BaseMediumHigh="#ffd4f8ff" BaseMediumLow="#ffbeedfe" ChromeAltLow="#ffd4f8ff" ChromeBlackHigh="Black" ChromeBlackLow="#ffd4f8ff" ChromeBlackMedium="Black" ChromeBlackMediumLow="Black" ChromeDisabledHigh="#ffb0e5fd" ChromeDisabledLow="#ffcdf4ff" ChromeGray="#ffc6f0fe" ChromeHigh="#ffc6f0fe" ChromeLow="#ff3689a7" ChromeMedium="#ff55a0bd" ChromeMediumLow="#ff92cee8" ChromeWhite="White" ListLow="#ff55a0bd" ListMedium="#ffb0e5fd" RegionColor="Black" />
 			</FluentTheme.Palettes>
-		</FluentTheme>
-		<StyleInclude Source="/Styles/ButtonStyles.axaml"/>
-	</Application.Styles>
+		</FluentTheme>-->
+        <sukiUi:SukiTheme ThemeColor="Orange" />
+        <StyleInclude Source="/Styles/ButtonStyles.axaml" />
+    </Application.Styles>
 </Application>

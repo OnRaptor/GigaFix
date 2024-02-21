@@ -22,5 +22,7 @@ namespace GigaFix.ViewModels
         {
             navigationService.Navigate(App.GetRequiredService<MainViewModel>());
         }
+
+        public void Register() => navigationService.Navigate(App.GetRequiredService<RegisterViewModel>());
     }
 }

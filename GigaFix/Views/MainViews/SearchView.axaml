@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:GigaFix.ViewModels.MainViews"
+             xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             xmlns:i="https://github.com/projektanker/icons.avalonia"
+             x:DataType="vm:AddOrderViewModel"
+             x:Class="GigaFix.Views.MainViews.SearchView">
+    <Grid RowDefinitions="40, *">
+        <TextBox Watermark="Поиск заявки" HorizontalAlignment="Stretch" Margin="20, 10"/>
+        
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl>
+                <controls:GlassCard Margin="10, 10">
+                    <DockPanel LastChildFill="True">
+                        <StackPanel Spacing="5" DockPanel.Dock="Right">
+                            <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
+                            <Button i:Attached.Icon="mdi-pencil">Удалить</Button>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Left">
+                            <StackPanel Spacing="5" Orientation="Horizontal">
+                                <TextBlock FontSize="16" Text="#1"/>
+                                <TextBlock FontSize="16" Margin="10, 0,0,0" Text="Нужно починить ванну"/>
+                            </StackPanel>
+                            <StackPanel Spacing="5" Orientation="Horizontal">
+                                <i:Icon FontSize="16" Value="mdi-wrench"/>
+                                <TextBlock FontSize="16" Text="Ванна"/>
+                                <i:Icon FontSize="16"  Value="mdi-help-box"/>
+                                <TextBlock FontSize="16" Text="Поломка"/>
+                            </StackPanel>
+                            <TextBlock FontSize="13" Text="Статус: В работе"/>
+                            <StackPanel Spacing="5" Orientation="Horizontal">
+                                <i:Icon Value="mdi-account" />
+                                <TextBlock FontSize="10" Foreground="Gray" Text="Шамиль Кулиев"/>
+                                <i:Icon Value="mdi-calendar-range"  />
+                                <TextBlock FontSize="10" Foreground="Gray" Text="20.02.2024"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </controls:GlassCard>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

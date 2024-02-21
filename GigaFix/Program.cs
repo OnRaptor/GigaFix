@@ -1,5 +1,7 @@
 ﻿using Avalonia;
 using System;
+using Projektanker.Icons.Avalonia;
+using Projektanker.Icons.Avalonia.MaterialDesign;
 
 namespace GigaFix
 {
@@ -18,9 +20,14 @@ namespace GigaFix
 
         // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
-            => AppBuilder.Configure<App>()
+        {
+            IconProvider.Current
+                .Register<MaterialDesignIconProvider>();
+            
+            return AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .WithInterFont()
                 .LogToTrace();
+        }
     }
 }
