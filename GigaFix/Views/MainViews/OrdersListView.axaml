@@ -10,7 +10,7 @@
              x:Class="GigaFix.Views.MainViews.OrdersListView">
     <ScrollViewer>
         <ItemsControl>
-        <controls:GlassCard Margin="10, 10">
+        <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
                     <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
@@ -37,7 +37,7 @@
                 </StackPanel>
             </DockPanel>
         </controls:GlassCard>
-        <controls:GlassCard Margin="10, 10">
+        <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
                     <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
@@ -64,7 +64,7 @@
                 </StackPanel>
             </DockPanel>
         </controls:GlassCard>
-        <controls:GlassCard Margin="10, 10">
+        <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
                     <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
@@ -91,7 +91,7 @@
                 </StackPanel>
             </DockPanel>
         </controls:GlassCard>
-        <controls:GlassCard Margin="10, 10">
+        <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
                     <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
@@ -118,7 +118,7 @@
                 </StackPanel>
             </DockPanel>
         </controls:GlassCard>
-        <controls:GlassCard Margin="10, 10">
+        <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
                     <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
@@ -145,7 +145,7 @@
                 </StackPanel>
             </DockPanel>
         </controls:GlassCard>
-        <controls:GlassCard Margin="10, 10">
+        <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
                     <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
@@ -172,7 +172,7 @@
                 </StackPanel>
             </DockPanel>
         </controls:GlassCard>
-        <controls:GlassCard Margin="10, 10">
+        <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
                     <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
@@ -199,7 +199,7 @@
                 </StackPanel>
             </DockPanel>
         </controls:GlassCard>
-        <controls:GlassCard Margin="10, 10">
+        <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
                     <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
@@ -226,7 +226,7 @@
                 </StackPanel>
             </DockPanel>
         </controls:GlassCard>
-        <controls:GlassCard Margin="10, 10">
+        <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
                     <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
@@ -253,7 +253,7 @@
                 </StackPanel>
             </DockPanel>
         </controls:GlassCard>
-        <controls:GlassCard Margin="10, 10">
+        <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
                     <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>

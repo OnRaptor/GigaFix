@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GigaFix.Views.MainViews.StatisticView">
+    <controls:GlassCard HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Spacing="5">
+            <TextBlock Text="Количество выполненных заявок:15"/>
+            <TextBlock Text="Среднее время выполнения заявки:2 часа"/>
+            <TextBlock Text="Статистика по типам неисправностей:"/>
+            <DataGrid
+                >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Тип"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Количество выполненных"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Среднее время выполнения"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </controls:GlassCard>
+</UserControl>
