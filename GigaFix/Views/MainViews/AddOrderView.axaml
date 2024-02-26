@@ -8,7 +8,7 @@
              x:DataType="vm:AddOrderViewModel"
              x:Class="GigaFix.Views.MainViews.AddOrderView">
     <controls:GlassCard HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center">
-        <StackPanel Spacing="5">
+        <StackPanel Spacing="5" Width="350">
             <TextBox HorizontalAlignment="Stretch" Watermark="Оборудование, которое требует ремонта"/>
             <TextBox HorizontalAlignment="Stretch" Watermark="Тип неисправности"/>
             <TextBox HorizontalAlignment="Stretch" Watermark="Клиент, который подал заявку"/>

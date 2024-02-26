@@ -3,9 +3,12 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 using GigaFix.ViewModels;
 using GigaFix.Views;
 using Splat;
+using SukiUI;
+using SukiUI.Models;
 
 namespace GigaFix
 {
@@ -14,6 +17,12 @@ namespace GigaFix
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
+            var MainTheme = new SukiColorTheme(
+                "MainTheme",
+                Color.FromRgb(253, 189, 64),
+                Color.FromRgb(176, 229, 253));
+            SukiTheme.GetInstance().AddColorTheme(MainTheme);
+            SukiTheme.GetInstance().ChangeColorTheme(MainTheme);
         }
 
         public override void OnFrameworkInitializationCompleted()

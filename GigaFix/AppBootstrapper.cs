@@ -30,7 +30,8 @@ namespace GigaFix
                 Locator.Current.GetService<OrdersListViewModel>(),
                 Locator.Current.GetService<AddOrderViewModel>(),
                 Locator.Current.GetService<SearchViewModel>(),
-                Locator.Current.GetService<StatisticViewModel>()
+                Locator.Current.GetService<StatisticViewModel>(),
+                Locator.Current.GetService<LoginViewModel>()
                 ));
             Locator.CurrentMutable.Register(() => new MainWindowViewModel(
                 Locator.Current.GetService<NavigationService>(),

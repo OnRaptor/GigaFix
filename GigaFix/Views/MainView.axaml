@@ -10,11 +10,18 @@
              x:Class="GigaFix.Views.MainView">
     <suki:SukiSideMenu ItemsSource="{Binding Views}">
         <suki:SukiSideMenu.HeaderContent>
-            <suki:GlassCard Margin="0,0,0,40" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="5">
-                    <i:Icon FontSize="20" Value="mdi-account"></i:Icon>
-                    <TextBlock Text="Мухаметов И.Р" TextWrapping="WrapWithOverflow"/>
-                </StackPanel>
+            <!-- <suki:GlassCard Margin="0,0,0,40" HorizontalAlignment="Center" HorizontalContentAlignment="Center"> -->
+            <!--     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="5"> -->
+            <!--         <i:Icon FontSize="20" Value="mdi-account"></i:Icon> -->
+            <!--         <TextBlock Text="Мухаметов И.Р" TextWrapping="WrapWithOverflow"/> -->
+            <!--     </StackPanel> -->
+            <!-- </suki:GlassCard> -->
+            <suki:GlassCard Margin="0,0,0,20" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+                <Expander Header="Мухаметов И.Р" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="5">
+                        <Button Command="{Binding SignOut}" Classes="Outlined">Выйти</Button>
+                    </StackPanel>
+                </Expander>
             </suki:GlassCard>
         </suki:SukiSideMenu.HeaderContent>
         <suki:SukiSideMenu.ItemTemplate>

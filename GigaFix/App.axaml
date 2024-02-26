@@ -17,7 +17,7 @@
 				<ColorPaletteResources x:Key="Dark" Accent="#fffdbd40" AltHigh="Black" AltLow="Black" AltMedium="Black" AltMediumHigh="Black" AltMediumLow="Black" BaseHigh="White" BaseLow="#ffb0e5fd" BaseMedium="#ffcdf4ff" BaseMediumHigh="#ffd4f8ff" BaseMediumLow="#ffbeedfe" ChromeAltLow="#ffd4f8ff" ChromeBlackHigh="Black" ChromeBlackLow="#ffd4f8ff" ChromeBlackMedium="Black" ChromeBlackMediumLow="Black" ChromeDisabledHigh="#ffb0e5fd" ChromeDisabledLow="#ffcdf4ff" ChromeGray="#ffc6f0fe" ChromeHigh="#ffc6f0fe" ChromeLow="#ff3689a7" ChromeMedium="#ff55a0bd" ChromeMediumLow="#ff92cee8" ChromeWhite="White" ListLow="#ff55a0bd" ListMedium="#ffb0e5fd" RegionColor="Black" />
 			</FluentTheme.Palettes>
 		</FluentTheme>-->
-        <sukiUi:SukiTheme ThemeColor="Orange" />
+        <sukiUi:SukiTheme/>
         <StyleInclude Source="/Styles/ButtonStyles.axaml" />
     </Application.Styles>
 </Application>

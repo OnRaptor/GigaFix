@@ -14,12 +14,15 @@ namespace GigaFix.ViewModels
 
         public List<PageViewModel> Views { get; set; } = new ();
 
+        private readonly NavigationService _navigationService;
+        private readonly LoginViewModel _loginViewModel;
         public MainViewModel(
             NavigationService navigationService,
             OrdersListViewModel ordersListViewModel,
             AddOrderViewModel addOrderViewModel,
             SearchViewModel searchViewModel,
-            StatisticViewModel statisticViewModel
+            StatisticViewModel statisticViewModel,
+            LoginViewModel loginViewModel
             )
         {
             navigationService.SetTopPanelVisibility(false);
@@ -27,6 +30,13 @@ namespace GigaFix.ViewModels
             Views.Add(addOrderViewModel);
             Views.Add(searchViewModel);
             Views.Add(statisticViewModel);
+            _navigationService = navigationService;
+            _loginViewModel = loginViewModel;
+        }
+
+        public void SignOut()
+        {
+            _navigationService.Navigate(_loginViewModel);
         }
     }
 }
