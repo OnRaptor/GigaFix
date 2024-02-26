@@ -18,8 +18,10 @@
             <!-- </suki:GlassCard> -->
             <suki:GlassCard Margin="0,0,0,20" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
                 <Expander Header="Мухаметов И.Р" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="5">
-                        <Button Command="{Binding SignOut}" Classes="Outlined">Выйти</Button>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Spacing="5">
+                        <Button Classes="Basic">Профиль</Button>
+                        <Button Classes="Basic">Найстроки</Button>
+                        <Button Command="{Binding SignOut}" Classes="Basic">Выйти</Button>
                     </StackPanel>
                 </Expander>
             </suki:GlassCard>
