@@ -8,7 +8,16 @@
              xmlns:i="https://github.com/projektanker/icons.avalonia"
              xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:Class="GigaFix.Views.MainViews.OrdersListView">
-    <ScrollViewer>
+    <Grid RowDefinitions="60, *">
+        <Grid ColumnDefinitions="*, 160">
+            <TextBox Watermark="Поиск заявки" HorizontalAlignment="Stretch" Margin="5, 10"/>
+            <ComboBox Height="43" HorizontalAlignment="Stretch" Grid.Column="1" PlaceholderText="Статус" >
+                <ComboBoxItem>Не выполнены</ComboBoxItem>
+                <ComboBoxItem>В работе</ComboBoxItem>
+                <ComboBoxItem>Выполнено</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+    <ScrollViewer Grid.Row="1">
         <ItemsControl>
         <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
@@ -283,4 +292,5 @@
 
     </ItemsControl>
     </ScrollViewer>
+    </Grid>
 </UserControl>

@@ -10,7 +10,9 @@
 		<TextBox Watermark="Логин" HorizontalAlignment="Stretch"/>
 		<TextBox PasswordChar="*" Watermark="Пароль" HorizontalAlignment="Stretch"/>
 		<Button Margin="5,0" Command="{Binding Login}" Classes="Flat Rounded" Content="Вход" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+		<!--
 		<Button Command="{Binding Register}" Content="Регистрация" Classes="Basic" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+	-->
 	</StackPanel>
   
 </UserControl>

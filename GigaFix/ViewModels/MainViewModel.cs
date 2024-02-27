@@ -20,7 +20,6 @@ namespace GigaFix.ViewModels
             NavigationService navigationService,
             OrdersListViewModel ordersListViewModel,
             AddOrderViewModel addOrderViewModel,
-            SearchViewModel searchViewModel,
             StatisticViewModel statisticViewModel,
             LoginViewModel loginViewModel
             )
@@ -28,7 +27,6 @@ namespace GigaFix.ViewModels
             navigationService.SetTopPanelVisibility(false);
             Views.Add(ordersListViewModel);
             Views.Add(addOrderViewModel);
-            Views.Add(searchViewModel);
             Views.Add(statisticViewModel);
             _navigationService = navigationService;
             _loginViewModel = loginViewModel;

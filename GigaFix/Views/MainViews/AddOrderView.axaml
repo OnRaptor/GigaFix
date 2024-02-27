@@ -8,12 +8,31 @@
              x:DataType="vm:AddOrderViewModel"
              x:Class="GigaFix.Views.MainViews.AddOrderView">
     <controls:GlassCard HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center">
-        <StackPanel Spacing="5" MinWidth="350">
-            <TextBox HorizontalAlignment="Stretch" Watermark="Оборудование, которое требует ремонта"/>
-            <TextBox HorizontalAlignment="Stretch" Watermark="Тип неисправности"/>
-            <TextBox HorizontalAlignment="Stretch" Watermark="Клиент, который подал заявку"/>
-            <TextBox HorizontalAlignment="Stretch" Watermark="Статус заявки"/>
-            <Button Classes="Rounded Flat" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">Добавить</Button>
+        <StackPanel Spacing="5" MinWidth="350" MaxWidth="350">
+            <TextBox Padding="0" Margin="0" HorizontalAlignment="Stretch" Watermark="Оборудование, которое требует ремонта"/>
+            <TextBox Padding="0" Margin="0" HorizontalAlignment="Stretch" Watermark="Тип неисправности"/>
+            <Grid ColumnDefinitions="*, 90">
+                <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Количество:"/>
+                <NumericUpDown Grid.Column="1"/>
+            </Grid>
+            <TextBox Padding="0" Margin="0" HorizontalAlignment="Stretch" VerticalContentAlignment="Top" Height="100" AcceptsReturn="True" TextWrapping="Wrap" Watermark="Описание"/>
+            <!--<ComboBox HorizontalAlignment="Stretch" PlaceholderText="Статус заявки">
+                <ComboBoxItem>Не выполнены</ComboBoxItem>
+                <ComboBoxItem>В работе</ComboBoxItem>
+                <ComboBoxItem>Выполнено</ComboBoxItem>
+            </ComboBox>-->
+            <Grid ColumnDefinitions="*, 150">
+                <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Клиент:"/>
+                <Button Classes="Basic" HorizontalAlignment="Right" Grid.Column="1">Прикрепить</Button>
+            </Grid>
+            <Grid ColumnDefinitions="*, 150">
+                <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Исполнитель:"/>
+                <Button 
+                    Command="{Binding showExecutorDialog}"
+                    Classes="Basic" HorizontalAlignment="Right" Grid.Column="1">Прикрепить</Button>
+            </Grid>
+            <Button Classes="Rounded Flat"
+                    HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">Добавить</Button>
         </StackPanel>
     </controls:GlassCard>
 </UserControl>
