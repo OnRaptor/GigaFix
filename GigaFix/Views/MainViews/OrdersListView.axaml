@@ -22,7 +22,7 @@
         <controls:GlassCard Margin="10, 0, 10, 10">
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="5" DockPanel.Dock="Right">
-                    <Button Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
+                    <Button Command="{Binding ShowEditDialog}" Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
                     <Button i:Attached.Icon="mdi-pencil">Удалить</Button>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Left">

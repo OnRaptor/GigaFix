@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GigaFix.Services;
+using GigaFix.ViewModels.Dialogs;
 using GigaFix.ViewModels.MainViews;
+using SukiUI.Controls;
 
 namespace GigaFix.ViewModels
 {
@@ -35,6 +37,7 @@ namespace GigaFix.ViewModels
         public void SignOut()
         {
             _navigationService.Navigate(_loginViewModel);
+            _navigationService.SetTopPanelVisibility(true);
         }
     }
 }

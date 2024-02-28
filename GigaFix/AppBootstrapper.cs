@@ -22,8 +22,10 @@ namespace GigaFix
             Locator.CurrentMutable.Register(() => new RegisterViewModel(
                 Locator.Current.GetService<NavigationService>()
             ));
-            Locator.CurrentMutable.Register(() => new OrdersListViewModel());
             Locator.CurrentMutable.Register(() => new AttachExecutorViewModel());
+            Locator.CurrentMutable.Register(() => new EditOrderViewModel());
+            Locator.CurrentMutable.Register(() => new OrdersListViewModel(
+                Locator.Current.GetService<EditOrderViewModel>()));
             Locator.CurrentMutable.Register(() => new AddOrderViewModel(
                 Locator.Current.GetService<AttachExecutorViewModel>()
                 ));

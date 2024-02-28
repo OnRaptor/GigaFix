@@ -1,0 +1,20 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             x:Class="GigaFix.Views.Dialogs.EditOrderView">
+    <StackPanel MaxWidth="300" HorizontalAlignment="Center" Spacing="5">
+        <TextBox Height="80" MaxLines="5" TextWrapping="Wrap" AcceptsReturn="True" Watermark="Комментарий"/>
+        <ComboBox PlaceholderText="Статус">
+            <ComboBoxItem>Не выполнено</ComboBoxItem>
+            <ComboBoxItem>В работе</ComboBoxItem>
+            <ComboBoxItem>Выполнено</ComboBoxItem>
+        </ComboBox>
+        <Grid ColumnDefinitions="*, 100">
+            <TextBlock VerticalAlignment="Center" Text="Кол-во выполненных часов:"/>
+            <NumericUpDown Grid.Column="1" Value="1"/>
+        </Grid>
+    </StackPanel>
+</UserControl>
