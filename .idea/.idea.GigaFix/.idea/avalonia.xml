@@ -4,6 +4,8 @@
     <option name="projectPerEditor">
       <map>
         <entry key="GigaFix/App.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/Dialogs/AttachExecutorView.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/Dialogs/EditOrderView.axaml" value="GigaFix/GigaFix.csproj" />
         <entry key="GigaFix/Views/LoginView.axaml" value="GigaFix/GigaFix.csproj" />
         <entry key="GigaFix/Views/MainView.axaml" value="GigaFix/GigaFix.csproj" />
         <entry key="GigaFix/Views/MainViews/AddOrderView.axaml" value="GigaFix/GigaFix.csproj" />

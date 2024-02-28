@@ -37,7 +37,6 @@ namespace GigaFix.ViewModels
         public void SignOut()
         {
             _navigationService.Navigate(_loginViewModel);
-            _navigationService.SetTopPanelVisibility(true);
         }
     }
 }

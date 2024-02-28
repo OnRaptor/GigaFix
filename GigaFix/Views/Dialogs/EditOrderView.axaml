@@ -6,7 +6,7 @@
              xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:Class="GigaFix.Views.Dialogs.EditOrderView">
     <StackPanel MaxWidth="300" HorizontalAlignment="Center" Spacing="5">
-        <TextBox Height="80" MaxLines="5" TextWrapping="Wrap" AcceptsReturn="True" Watermark="Комментарий"/>
+        <TextBox VerticalContentAlignment="Top" Height="80" MaxLines="5" TextWrapping="Wrap" AcceptsReturn="True" Watermark="Комментарий"/>
         <ComboBox PlaceholderText="Статус">
             <ComboBoxItem>Не выполнено</ComboBoxItem>
             <ComboBoxItem>В работе</ComboBoxItem>
@@ -16,5 +16,6 @@
             <TextBlock VerticalAlignment="Center" Text="Кол-во выполненных часов:"/>
             <NumericUpDown Grid.Column="1" Value="1"/>
         </Grid>
+        <Button>Сохранить</Button>
     </StackPanel>
 </UserControl>
