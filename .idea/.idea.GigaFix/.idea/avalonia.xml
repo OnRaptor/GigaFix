@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="GigaFix/App.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/LoginView.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/MainView.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/MainViews/AddOrderView.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/MainViews/OrdersListView.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/MainViews/SearchView.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/MainViews/StatisticView.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/MainWindow.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/OrdersListView.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/RegisterView.axaml" value="GigaFix/GigaFix.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
