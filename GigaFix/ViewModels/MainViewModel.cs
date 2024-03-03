@@ -18,25 +18,34 @@ namespace GigaFix.ViewModels
 
         private readonly NavigationService _navigationService;
         private readonly LoginViewModel _loginViewModel;
+        private readonly NotificationsViewModel _notificationViewModel;
         public MainViewModel(
             NavigationService navigationService,
             OrdersListViewModel ordersListViewModel,
             AddOrderViewModel addOrderViewModel,
             StatisticViewModel statisticViewModel,
-            LoginViewModel loginViewModel
+            LoginViewModel loginViewModel,
+            NotificationsViewModel notificationsViewModel
             )
         {
-            navigationService.SetTopPanelVisibility(false);
+            OnNavigate = () => navigationService.SetTopPanelVisibility(false);
             Views.Add(ordersListViewModel);
             Views.Add(addOrderViewModel);
             Views.Add(statisticViewModel);
             _navigationService = navigationService;
             _loginViewModel = loginViewModel;
+            _notificationViewModel = notificationsViewModel;
         }
 
         public void SignOut()
         {
             _navigationService.Navigate(_loginViewModel);
+        }
+
+        public void OpenNotifications()
+        {
+            _navigationService.SetTopPanelVisibility(true);
+            _navigationService.Navigate(_notificationViewModel);
         }
     }
 }

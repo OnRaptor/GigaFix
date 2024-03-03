@@ -20,6 +20,8 @@ namespace GigaFix.ViewModels
                 CurrentViewModel = e;
                 viewsStack.Push(e);
                 CanNavigateBack = true;
+                if (e.OnNavigate != null)
+                    e.OnNavigate();
             };
             ns.SetTopPanelVisibility = (e) =>
             {
@@ -34,6 +36,9 @@ namespace GigaFix.ViewModels
             CurrentViewModel = vm;
             if (viewsStack.Count == 1 || viewsStack.Count == 0)
                 CanNavigateBack = false;
+            
+            if (vm.OnNavigate != null)
+                vm.OnNavigate();
         }
     }
 }

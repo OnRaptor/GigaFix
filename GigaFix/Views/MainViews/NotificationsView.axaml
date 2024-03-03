@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:GigaFix.ViewModels.MainViews"
+             xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             x:DataType="vm:NotificationsViewModel"
+             x:Class="GigaFix.Views.MainViews.NotificationsView">
+    <StackPanel Margin="0, 5" Spacing="10" MinWidth="400" MaxWidth="450" HorizontalAlignment="Center">
+        <controls:GlassCard Padding="5">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <ComboBox PlaceholderText="Фильтр">
+                    <ComboBoxItem>Все</ComboBoxItem>
+                    <ComboBoxItem>Завершеные</ComboBoxItem>
+                </ComboBox>
+                <ComboBox PlaceholderText="Сортировка">
+                    <ComboBoxItem>Новые</ComboBoxItem>
+                    <ComboBoxItem>Старые</ComboBoxItem>
+                </ComboBox>
+                <Button Height="36" Padding="10, 0">Очистить все</Button>
+            </StackPanel>
+        </controls:GlassCard>
+        <controls:GlassCard>
+            <DockPanel LastChildFill="True">
+                <Button DockPanel.Dock="Right">
+                    Перейти
+                </Button>
+                <TextBlock VerticalAlignment="Center" Text="Изменен статус у заявки #2"></TextBlock>
+            </DockPanel>
+        </controls:GlassCard>
+        
+        <controls:GlassCard>
+            <DockPanel LastChildFill="True">
+                <Button DockPanel.Dock="Right">
+                    Перейти
+                </Button>
+                <TextBlock VerticalAlignment="Center" Text="Изменен исполнитель у заявки #3"></TextBlock>
+            </DockPanel>
+        </controls:GlassCard>
+        
+        <controls:GlassCard>
+            <DockPanel LastChildFill="True">
+                <Button DockPanel.Dock="Right">
+                    Перейти
+                </Button>
+                <TextBlock VerticalAlignment="Center" Text="Завершена заявка #5"></TextBlock>
+            </DockPanel>
+        </controls:GlassCard>
+    </StackPanel>
+</UserControl>

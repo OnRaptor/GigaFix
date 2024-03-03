@@ -9,6 +9,7 @@
         <entry key="GigaFix/Views/LoginView.axaml" value="GigaFix/GigaFix.csproj" />
         <entry key="GigaFix/Views/MainView.axaml" value="GigaFix/GigaFix.csproj" />
         <entry key="GigaFix/Views/MainViews/AddOrderView.axaml" value="GigaFix/GigaFix.csproj" />
+        <entry key="GigaFix/Views/MainViews/NotificationsView.axaml" value="GigaFix/GigaFix.csproj" />
         <entry key="GigaFix/Views/MainViews/OrdersListView.axaml" value="GigaFix/GigaFix.csproj" />
         <entry key="GigaFix/Views/MainViews/SearchView.axaml" value="GigaFix/GigaFix.csproj" />
         <entry key="GigaFix/Views/MainViews/StatisticView.axaml" value="GigaFix/GigaFix.csproj" />
