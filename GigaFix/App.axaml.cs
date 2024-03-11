@@ -23,7 +23,10 @@ namespace GigaFix
                 Color.FromRgb(176, 229, 253));
             SukiTheme.GetInstance().AddColorTheme(MainTheme);
             SukiTheme.GetInstance().ChangeColorTheme(MainTheme);
+            
+            
         }
+        
 
         public override void OnFrameworkInitializationCompleted()
         {

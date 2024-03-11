@@ -14,6 +14,7 @@ namespace GigaFix
         public static void Main(string[] args)
         {
             AppBootstrapper.RegisterAll();
+            
             BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
         }

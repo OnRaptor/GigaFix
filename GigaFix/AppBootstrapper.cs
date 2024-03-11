@@ -6,8 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GigaFix.Data;
 using GigaFix.ViewModels.Dialogs;
 using GigaFix.ViewModels.MainViews;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Splat.Microsoft.Extensions.DependencyInjection;
 
 namespace GigaFix
 {
@@ -15,34 +19,25 @@ namespace GigaFix
     {
         public static void RegisterAll()
         {
-            Locator.CurrentMutable.RegisterConstant(new NavigationService());
-            Locator.CurrentMutable.Register(() => new LoginViewModel(
-                Locator.Current.GetService<NavigationService>()
-                ));
-            Locator.CurrentMutable.Register(() => new RegisterViewModel(
-                Locator.Current.GetService<NavigationService>()
-            ));
-            Locator.CurrentMutable.Register(() => new AttachExecutorViewModel());
-            Locator.CurrentMutable.Register(() => new EditOrderViewModel());
-            Locator.CurrentMutable.Register(() => new NotificationsViewModel());
-            Locator.CurrentMutable.Register(() => new OrdersListViewModel(
-                Locator.Current.GetService<EditOrderViewModel>()));
-            Locator.CurrentMutable.Register(() => new AddOrderViewModel(
-                Locator.Current.GetService<AttachExecutorViewModel>()
-                ));
-            Locator.CurrentMutable.Register(() => new StatisticViewModel());
-            Locator.CurrentMutable.Register(() => new MainViewModel(
-                Locator.Current.GetService<NavigationService>(),
-                Locator.Current.GetService<OrdersListViewModel>(),
-                Locator.Current.GetService<AddOrderViewModel>(),
-                Locator.Current.GetService<StatisticViewModel>(),
-                Locator.Current.GetService<LoginViewModel>(),
-                Locator.Current.GetService<NotificationsViewModel>()
-                ));
-            Locator.CurrentMutable.Register(() => new MainWindowViewModel(
-                Locator.Current.GetService<NavigationService>(),
-                Locator.Current.GetService<LoginViewModel>()
-                ));
+            ServiceCollection services = new ServiceCollection();
+            services.UseMicrosoftDependencyResolver();
+            services.AddDbContext<AppDbContext>(opts =>
+                opts.UseMySql(
+                    ServerVersion.AutoDetect("host=localhost;port=3306;user=root;password=root;database=demo_ekz")
+                    ), ServiceLifetime.Singleton);
+            services.AddSingleton(new NavigationService());
+            services.AddScoped<LoginViewModel>();
+            services.AddScoped<RegisterViewModel>();
+            services.AddScoped<AttachExecutorViewModel>();
+            services.AddScoped<EditOrderViewModel>();
+            services.AddScoped<NotificationsViewModel>();
+            services.AddScoped<OrdersListViewModel>();
+            services.AddScoped<AddOrderViewModel>();
+            services.AddScoped<StatisticViewModel>();
+            services.AddScoped<MainViewModel>();
+            services.AddScoped<MainWindowViewModel>();
+            IServiceProvider container = services.BuildServiceProvider();
+            container.UseMicrosoftDependencyResolver();
         }
     }
 }

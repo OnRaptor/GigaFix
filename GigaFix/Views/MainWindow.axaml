@@ -11,7 +11,7 @@
                  FontFamily="Tw Cen MT"
                  MinWidth="600"
                  MinHeight="500"
-                 Title="GigaFix">
+                 Title="{Binding WindowTitle}">
 	<suki:SukiWindow.LogoContent>
 		<Image Width="25" Source="/Assets/icon.ico"/>
 	</suki:SukiWindow.LogoContent>

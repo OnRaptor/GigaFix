@@ -9,7 +9,8 @@ namespace GigaFix.ViewModels
         [ObservableProperty]public PageViewModel currentViewModel;
         [ObservableProperty]public bool canNavigateBack;
         [ObservableProperty]public bool isTopPanelVisible = true;
-
+        [ObservableProperty] public string windowTitle = "GigaFix";
+        
         private Stack viewsStack = new Stack();
         public MainWindowViewModel(NavigationService ns, LoginViewModel loginVm)
         {
@@ -22,6 +23,7 @@ namespace GigaFix.ViewModels
                 CanNavigateBack = true;
                 if (e.OnNavigate != null)
                     e.OnNavigate();
+                ApplyWindowTitle(e);
             };
             ns.SetTopPanelVisibility = (e) =>
             {
@@ -39,6 +41,15 @@ namespace GigaFix.ViewModels
             
             if (vm.OnNavigate != null)
                 vm.OnNavigate();
+            ApplyWindowTitle(vm);
+        }
+        
+        private void ApplyWindowTitle(PageViewModel vm)
+        {
+            if (!IsTopPanelVisible)
+                WindowTitle = "GigaFix - " + vm.Title;
+            else
+                WindowTitle = "GigaFix";
         }
     }
 }
