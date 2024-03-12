@@ -3,35 +3,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:types="clr-namespace:System;assembly=System.Runtime"
              xmlns:vm="using:GigaFix.ViewModels.MainViews"
              xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:DataType="vm:AddOrderViewModel"
              x:Class="GigaFix.Views.MainViews.AddOrderView">
     <controls:GlassCard HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center">
         <StackPanel Spacing="5" MinWidth="350" MaxWidth="350">
-            <TextBox Padding="0" Margin="0" HorizontalAlignment="Stretch" Watermark="Оборудование, которое требует ремонта"/>
-            <TextBox Padding="0" Margin="0" HorizontalAlignment="Stretch" Watermark="Тип неисправности"/>
-            <Grid ColumnDefinitions="*, 90">
+            <TextBox Text="{Binding EquipmentName,Mode=TwoWay}" Padding="0" Margin="0" HorizontalAlignment="Stretch" Watermark="Оборудование, которое требует ремонта"/>
+            <TextBlock Margin="5,0" Text="Тип оборудования"/>
+            <ComboBox SelectedValue="{Binding TypeEquipment, Mode=TwoWay}" DisplayMemberBinding="{Binding Name}" ItemsSource="{Binding TypeEquipments}" Padding="0" Margin="0" HorizontalAlignment="Stretch"/>
+            <TextBlock Margin="5,0" Text="Тип проблемы"/>
+            <ComboBox SelectedValue="{Binding TypeProblem, Mode=TwoWay}" DisplayMemberBinding="{Binding Name}" ItemsSource="{Binding TypeProblems}" Padding="0" Margin="0" HorizontalAlignment="Stretch"/>
+            <TextBlock Margin="5,0" Text="Исполнитель"/>
+            <ComboBox SelectedValue="{Binding Executor, Mode=TwoWay}" DisplayMemberBinding="{Binding FullnameUser}" ItemsSource="{Binding Executors}" Padding="0" Margin="0" HorizontalAlignment="Stretch"/>
+            <ComboBox SelectedValue="{Binding Status,Mode=TwoWay}" HorizontalAlignment="Stretch" PlaceholderText="Статус заявки">
+                <types:String>В ожидании</types:String>
+                <types:String>В работе</types:String>
+                <types:String>Выполнено</types:String>
+            </ComboBox>
+            
+            <!--<Grid ColumnDefinitions="*, 90">
                 <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Количество:"/>
                 <NumericUpDown Grid.Column="1"/>
-            </Grid>
-            <TextBox Padding="0" Margin="0" HorizontalAlignment="Stretch" VerticalContentAlignment="Top" Height="100" AcceptsReturn="True" TextWrapping="Wrap" Watermark="Описание"/>
-            <!--<ComboBox HorizontalAlignment="Stretch" PlaceholderText="Статус заявки">
-                <ComboBoxItem>Не выполнены</ComboBoxItem>
-                <ComboBoxItem>В работе</ComboBoxItem>
-                <ComboBoxItem>Выполнено</ComboBoxItem>
-            </ComboBox>-->
-            <Grid ColumnDefinitions="*, 150">
-                <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Клиент:"/>
-                <Button Classes="Basic" HorizontalAlignment="Right" Grid.Column="1">Прикрепить</Button>
-            </Grid>
-            <Grid ColumnDefinitions="*, 150">
+            </Grid>-->
+            <TextBox Text="{Binding ClientFio,Mode=TwoWay}" Padding="0" Margin="0" HorizontalAlignment="Stretch" Watermark="ФИО клиента"/>
+            <TextBox Text="{Binding Description,Mode=TwoWay}" Padding="0" Margin="0" HorizontalAlignment="Stretch" VerticalContentAlignment="Top" Height="100" AcceptsReturn="True" TextWrapping="Wrap" Watermark="Описание"/>
+            
+            <!--<Grid ColumnDefinitions="*, 150">
                 <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Исполнитель:"/>
                 <Button 
                     Command="{Binding showExecutorDialog}"
                     Classes="Basic" HorizontalAlignment="Right" Grid.Column="1">Прикрепить</Button>
-            </Grid>
-            <Button Classes="Rounded Flat"
+            </Grid>-->
+            <Button Classes="Rounded Flat" Command="{Binding AddApplication}"
                     HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">Добавить</Button>
         </StackPanel>
     </controls:GlassCard>

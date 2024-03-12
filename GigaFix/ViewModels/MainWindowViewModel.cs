@@ -39,8 +39,7 @@ namespace GigaFix.ViewModels
             if (viewsStack.Count == 1 || viewsStack.Count == 0)
                 CanNavigateBack = false;
             
-            if (vm.OnNavigate != null)
-                vm.OnNavigate();
+            vm?.OnNavigate();
             ApplyWindowTitle(vm);
         }
         

@@ -3,19 +3,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:GigaFix.ViewModels.Dialogs"
+             xmlns:types="clr-namespace:System;assembly=System.Runtime"
+             x:DataType="vm:EditOrderViewModel"
              xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:Class="GigaFix.Views.Dialogs.EditOrderView">
-    <StackPanel MaxWidth="300" HorizontalAlignment="Center" Spacing="5">
-        <TextBox VerticalContentAlignment="Top" Height="80" MaxLines="5" TextWrapping="Wrap" AcceptsReturn="True" Watermark="Комментарий"/>
-        <ComboBox PlaceholderText="Статус">
-            <ComboBoxItem>Не выполнено</ComboBoxItem>
-            <ComboBoxItem>В работе</ComboBoxItem>
-            <ComboBoxItem>Выполнено</ComboBoxItem>
+    <StackPanel MinWidth="290" MaxWidth="300" HorizontalAlignment="Center" Spacing="5">
+        <TextBox Text="{Binding Description,Mode=TwoWay}" VerticalContentAlignment="Top" Height="80" MaxLines="5" TextWrapping="Wrap" AcceptsReturn="True" Watermark="Описание"/>
+        <TextBox IsVisible="{Binding IsExecutor}" Text="{Binding Comment,Mode=TwoWay}" VerticalContentAlignment="Top" Height="80" MaxLines="5" TextWrapping="Wrap" AcceptsReturn="True" Watermark="Комментарий"/>
+        <ComboBox SelectedValue="{Binding Status,Mode=TwoWay}" HorizontalAlignment="Stretch" PlaceholderText="Статус заявки">
+            <types:String>В ожидании</types:String>
+            <types:String>В работе</types:String>
+            <types:String>Выполнено</types:String>
         </ComboBox>
-        <Grid ColumnDefinitions="*, 100">
-            <TextBlock VerticalAlignment="Center" Text="Кол-во выполненных часов:"/>
-            <NumericUpDown Grid.Column="1" Value="1"/>
-        </Grid>
-        <Button>Сохранить</Button>
+        <StackPanel IsVisible="{Binding IsExecutor}" >
+            <TextBlock VerticalAlignment="Center" Text="Затраченное время:"/>
+            <TimePicker SelectedTime="{Binding WorkTime, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel IsVisible="{Binding IsDispatcher}">
+            <TextBlock Margin="5,0" Text="Исполнитель"/>
+            <ComboBox SelectedValue="{Binding Executor, Mode=TwoWay}" DisplayMemberBinding="{Binding FullnameUser}" ItemsSource="{Binding Executors}" Padding="0" Margin="0" HorizontalAlignment="Stretch"/>
+        </StackPanel>
+        <Button Command="{Binding Save}">Сохранить</Button>
     </StackPanel>
 </UserControl>

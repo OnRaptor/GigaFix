@@ -8,7 +8,7 @@
              xmlns:vm="using:GigaFix.ViewModels"
              x:DataType="vm:MainViewModel"
              x:Class="GigaFix.Views.MainView">
-    <suki:SukiSideMenu ItemsSource="{Binding Views}">
+    <suki:SukiSideMenu SelectedItem="{Binding SelectedView,Mode=TwoWay}" ItemsSource="{Binding Views}">
         <suki:SukiSideMenu.HeaderContent>
             <!-- <suki:GlassCard Margin="0,0,0,40" HorizontalAlignment="Center" HorizontalContentAlignment="Center"> -->
             <!--     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="5"> -->
@@ -17,7 +17,7 @@
             <!--     </StackPanel> -->
             <!-- </suki:GlassCard> -->
             <suki:GlassCard Margin="0,0,0,20" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
-                <Expander Header="Мухаметов И.Р" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+                <Expander Header="{Binding UserName}" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Spacing="5">
                         <Button Command="{Binding OpenNotifications}" Classes="Basic">Уведомления</Button>
                         <Button Command="{Binding SignOut}" Classes="Basic">Выйти</Button>

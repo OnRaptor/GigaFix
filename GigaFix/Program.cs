@@ -1,7 +1,13 @@
 ﻿using Avalonia;
 using System;
+using GigaFix.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Projektanker.Icons.Avalonia;
 using Projektanker.Icons.Avalonia.MaterialDesign;
+using SukiUI.MessageBox;
+using Application = GigaFix.Data.Application;
 
 namespace GigaFix
 {
@@ -14,7 +20,6 @@ namespace GigaFix
         public static void Main(string[] args)
         {
             AppBootstrapper.RegisterAll();
-            
             BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
         }

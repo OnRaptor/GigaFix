@@ -1,14 +1,19 @@
-using Avalonia;
+using System;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using GigaFix.Data;
 using GigaFix.ViewModels;
 using GigaFix.Views;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Splat;
 using SukiUI;
+using SukiUI.MessageBox;
 using SukiUI.Models;
+using Application = Avalonia.Application;
 
 namespace GigaFix
 {
@@ -23,11 +28,8 @@ namespace GigaFix
                 Color.FromRgb(176, 229, 253));
             SukiTheme.GetInstance().AddColorTheme(MainTheme);
             SukiTheme.GetInstance().ChangeColorTheme(MainTheme);
-            
-            
         }
         
-
         public override void OnFrameworkInitializationCompleted()
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
@@ -37,7 +39,7 @@ namespace GigaFix
                 BindingPlugins.DataValidators.RemoveAt(0);
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext = App.GetRequiredService<MainWindowViewModel>(),
+                    DataContext = GetRequiredService<MainWindowViewModel>(),
                 };
             }
 

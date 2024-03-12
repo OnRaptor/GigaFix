@@ -1,23 +1,66 @@
+using System;
+using System.Collections.Generic;
+using CommunityToolkit.Mvvm.ComponentModel;
+using GigaFix.Data;
+using GigaFix.Services;
 using GigaFix.ViewModels.Dialogs;
 using SukiUI.Controls;
 
 namespace GigaFix.ViewModels.MainViews;
 
-public class AddOrderViewModel : PageViewModel
+public partial class AddOrderViewModel : PageViewModel
 {
     public override string Title => "Добавить заявку";
     public override string IconName => "mdi-plus";
 
-    private readonly AttachExecutorViewModel _attachExecutorViewModel;
+    [ObservableProperty] private IEnumerable<TypeEquipment> typeEquipments;
+    [ObservableProperty] private IEnumerable<TypeProblem> typeProblems;
+    [ObservableProperty] private IEnumerable<User> executors;
+    [ObservableProperty] private string equipmentName;
+    [ObservableProperty] private string clientFio;
+    [ObservableProperty] private string description;
+    [ObservableProperty] private string status;
+    [ObservableProperty] private TypeEquipment typeEquipment;
+    [ObservableProperty] private TypeProblem typeProblem;
+    [ObservableProperty] private User executor;
+    
+    private readonly ApplicationsService _applicationsService;
     public AddOrderViewModel(
-        AttachExecutorViewModel _attachExecutorViewModel
+        ApplicationsService applicationsService
         )
     {
-        this._attachExecutorViewModel = _attachExecutorViewModel;
+        _applicationsService = applicationsService;
     }
 
-    public void showExecutorDialog()
+    public override Action? OnNavigate => async () =>
+    {   
+        TypeEquipments = await _applicationsService.GetEquipmentTypes();
+        TypeProblems = await _applicationsService.GetProblemTypes();
+        Executors = await _applicationsService.GetExecutors();
+    };
+
+    public async void AddApplication()
+    {
+        try
+        {
+            var r = await _applicationsService.CreateApplication(
+                EquipmentName,
+                TypeEquipment.IdTypeEquipment,
+                TypeEquipment.IdTypeEquipment,
+                Status,
+                ClientFio,
+                Description,
+                Executor.IdUser);
+            await SukiHost.ShowToast("Результат", r);
+        }
+        catch (Exception e)
+        {
+            await SukiHost.ShowToast("Ошибка", e.Message);
+        }
+    }
+    
+    /*public void showExecutorDialog()
     {
         SukiHost.ShowDialog(_attachExecutorViewModel, allowBackgroundClose:true);
-    }
+    }*/
 }

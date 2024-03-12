@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using GigaFix.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace GigaFix.Data;
 
 public partial class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options)
-        : base(options)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        optionsBuilder
+            .LogTo(Console.WriteLine, LogLevel.Information)
+            .EnableSensitiveDataLogging()
+            .EnableDetailedErrors();
+        optionsBuilder.UseMySql(
+            "server=localhost;user=root;password=root;database=demo_ekz;",
+            new MySqlServerVersion(new Version(8, 0, 36)));
     }
-
     public virtual DbSet<Application> Applications { get; set; }
 
     public virtual DbSet<Notification> Notifications { get; set; }

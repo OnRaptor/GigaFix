@@ -5,23 +5,26 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:GigaFix.ViewModels.MainViews"
              x:DataType="vm:OrdersListViewModel"
+             xmlns:db="clr-namespace:GigaFix.Data"
+             xmlns:types="clr-namespace:System;assembly=System.Runtime"
              xmlns:i="https://github.com/projektanker/icons.avalonia"
              xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              Name="Root"
              x:Class="GigaFix.Views.MainViews.OrdersListView">
     <Grid RowDefinitions="60, *">
         <Grid ColumnDefinitions="*, 160">
-            <TextBox Watermark="Поиск заявки" HorizontalAlignment="Stretch" Margin="5, 10"/>
-            <ComboBox Height="43" HorizontalAlignment="Stretch" Grid.Column="1" PlaceholderText="Статус" >
-                <ComboBoxItem>Не выполнены</ComboBoxItem>
-                <ComboBoxItem>В работе</ComboBoxItem>
-                <ComboBoxItem>Выполнено</ComboBoxItem>
+            <TextBox Text="{Binding SearchText,Mode=TwoWay}" Watermark="Поиск заявки" HorizontalAlignment="Stretch" Margin="5, 10"/>
+            <ComboBox SelectedIndex="0" SelectedValue="{Binding Filter, Mode=TwoWay}" Height="43" HorizontalAlignment="Stretch" Grid.Column="1" PlaceholderText="Статус" >
+                <types:String>Не выбрано</types:String>
+                <types:String>Не выполнено</types:String>
+                <types:String>В работе</types:String>
+                <types:String>Выполнено</types:String>
             </ComboBox>
         </Grid>
     <ScrollViewer Grid.Row="1">
         <ItemsControl ItemsSource="{Binding Orders}">
             <ItemsControl.DataTemplates>
-                <DataTemplate x:DataType="x:Int32">
+                <DataTemplate x:DataType="db:Application">
                     <controls:GlassCard Margin="10, 0, 10, 10">
                         <DockPanel LastChildFill="True">
                             <StackPanel Spacing="5" DockPanel.Dock="Right">
@@ -29,26 +32,37 @@
                                     Command="{Binding 
                                     $parent[ItemsControl].((vm:OrdersListViewModel)DataContext).ShowEditDialog
                                     }"
+                                    CommandParameter="{Binding IdApplication} "
                                     Classes="Rounded Flat" i:Attached.Icon="mdi-pencil">Изменить</Button>
+                                <!--
                                 <Button i:Attached.Icon="mdi-pencil">Удалить</Button>
+                            -->
                             </StackPanel>
-                            <StackPanel DockPanel.Dock="Left">
+                            <TextBlock Margin="20,30" MaxWidth="300" TextWrapping="Wrap" DockPanel.Dock="Right" FontSize="13" Foreground="DarkGray" Text="{Binding Comment}"/>
+                            <StackPanel Spacing="5" DockPanel.Dock="Left">
                                 <StackPanel Spacing="5" Orientation="Horizontal">
-                                    <TextBlock FontSize="16" Text="{Binding }"/>
-                                    <TextBlock FontSize="16" Margin="10, 0,0,0" Text="Нужно починить ванну"/>
+                                    <TextBlock FontSize="16" Text="{Binding Number}"/>
+                                    <TextBlock FontSize="16" Margin="10, 0,0,0" Text="{Binding Description}"/>
                                 </StackPanel>
                                 <StackPanel Spacing="5" Orientation="Horizontal">
                                     <i:Icon FontSize="16" Value="mdi-wrench"/>
-                                    <TextBlock FontSize="16" Text="Ванна"/>
-                                    <i:Icon FontSize="16"  Value="mdi-help-box"/>
-                                    <TextBlock FontSize="16" Text="Поломка"/>
+                                    <TextBlock FontSize="16" Text="{Binding NameEquipment}"/>
+                                    <!--<i:Icon FontSize="16"  Value="mdi-help-box"/>
+                                    <TextBlock FontSize="16" Text="{Binding IdTypeEquipmentNavigation.Name}"/>-->
+                                    <i:Icon FontSize="16"  Value="mdi-cash"/>
+                                    <TextBlock FontSize="16" Text="{Binding Cost}"/>
                                 </StackPanel>
-                                <TextBlock FontSize="13" Text="Статус: В работе"/>
+                                <StackPanel Spacing="5" Orientation="Horizontal">
+                                    <i:Icon FontSize="16" Value="mdi-progress-wrench"/>
+                                    <TextBlock FontSize="13" Text="{Binding Status}"/>
+                                    <i:Icon FontSize="16" Value="mdi-alert"/>
+                                    <TextBlock FontSize="13" Text="{Binding IdTypeProblemNavigation.Name}"/>
+                                </StackPanel>
                                 <StackPanel Spacing="5" Orientation="Horizontal">
                                     <i:Icon Value="mdi-account" />
-                                    <TextBlock FontSize="10" Foreground="Gray" Text="Шамиль Кулиев"/>
+                                    <TextBlock FontSize="10" Foreground="Gray" Text="{Binding IdEmployeeNavigation.FullnameUser}"/>
                                     <i:Icon Value="mdi-calendar-range"  />
-                                    <TextBlock FontSize="10" Foreground="Gray" Text="20.02.2024"/>
+                                    <TextBlock FontSize="10" Foreground="Gray" Text="{Binding DateAddition}"/>
                                 </StackPanel>
                             </StackPanel>
                         </DockPanel>

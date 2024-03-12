@@ -28,6 +28,10 @@ namespace GigaFix.ViewModels
         {
             this.navigationService = navigationService;
             this.authService = authService;
+#if DEBUG
+            Login = "login1@gmail.com";
+            Password = "password1";
+#endif
         }
 
         public override string Title => "Авторизуйтесь";
@@ -35,9 +39,9 @@ namespace GigaFix.ViewModels
         public async void StartLogin()
         {
             if (await authService.Login(Login, Password))
-                navigationService.Navigate(App.GetRequiredService<MainViewModel>());
+                    navigationService.Navigate(App.GetRequiredService<MainViewModel>());
             else
-                SukiHost.ShowToast("Ошибка", "Не удалось войти");
+                await SukiHost.ShowToast("Ошибка", "Не удалось войти");
         }
     }
 }

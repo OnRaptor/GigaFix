@@ -11,22 +11,22 @@ using GigaFix.ViewModels.Dialogs;
 using GigaFix.ViewModels.MainViews;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Splat.Microsoft.Extensions.DependencyInjection;
 
 namespace GigaFix
 {
     public class AppBootstrapper
     {
-        public static void RegisterAll()
+        public static IServiceProvider RegisterAll()
         {
             ServiceCollection services = new ServiceCollection();
             services.UseMicrosoftDependencyResolver();
-            services.AddDbContext<AppDbContext>(opts =>
-                opts.UseMySql(
-                    ServerVersion.AutoDetect("server=localhost;port=3306;uid=root;pwd=root;database=demo_ekz")
-                    ), ServiceLifetime.Singleton);
-            services.AddSingleton(new NavigationService());
+            services.AddLogging(builder => builder.AddDebug().AddConsole());
+            services.AddDbContext<AppDbContext>(ServiceLifetime.Singleton);
+            services.AddSingleton<NavigationService>();
             services.AddSingleton<AuthService>();
+            services.AddSingleton<ApplicationsService>();
             services.AddScoped<LoginViewModel>();
             services.AddScoped<RegisterViewModel>();
             services.AddScoped<AttachExecutorViewModel>();
@@ -39,6 +39,7 @@ namespace GigaFix
             services.AddScoped<MainWindowViewModel>();
             IServiceProvider container = services.BuildServiceProvider();
             container.UseMicrosoftDependencyResolver();
+            return container;
         }
     }
 }
