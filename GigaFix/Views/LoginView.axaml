@@ -7,12 +7,9 @@
 			 x:DataType="vm:LoginViewModel"
              x:Class="GigaFix.Views.LoginView">
 	<StackPanel Spacing="6" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
-		<TextBox Watermark="Логин" HorizontalAlignment="Stretch"/>
-		<TextBox PasswordChar="*" Watermark="Пароль" HorizontalAlignment="Stretch"/>
-		<Button Margin="5,0" Command="{Binding Login}" Classes="Flat Rounded" Content="Вход" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
-		<!--
-		<Button Command="{Binding Register}" Content="Регистрация" Classes="Basic" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
-	-->
+		<TextBox Text="{Binding Login, Mode=TwoWay}" Watermark="Логин" HorizontalAlignment="Stretch"/>
+		<TextBox Text="{Binding Password, Mode=TwoWay}" PasswordChar="*" Watermark="Пароль" HorizontalAlignment="Stretch"/>
+		<Button IsVisible="{Binding CanLogin, Mode=OneWay}" Margin="5,0" Command="{Binding StartLogin}" Classes="Flat Rounded" Content="Вход" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
 	</StackPanel>
   
 </UserControl>

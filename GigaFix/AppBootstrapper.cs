@@ -23,9 +23,10 @@ namespace GigaFix
             services.UseMicrosoftDependencyResolver();
             services.AddDbContext<AppDbContext>(opts =>
                 opts.UseMySql(
-                    ServerVersion.AutoDetect("host=localhost;port=3306;user=root;password=root;database=demo_ekz")
+                    ServerVersion.AutoDetect("server=localhost;port=3306;uid=root;pwd=root;database=demo_ekz")
                     ), ServiceLifetime.Singleton);
             services.AddSingleton(new NavigationService());
+            services.AddSingleton<AuthService>();
             services.AddScoped<LoginViewModel>();
             services.AddScoped<RegisterViewModel>();
             services.AddScoped<AttachExecutorViewModel>();
