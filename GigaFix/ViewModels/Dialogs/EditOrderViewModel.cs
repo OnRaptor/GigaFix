@@ -35,8 +35,10 @@ public partial class EditOrderViewModel : ViewModelBase
     {
         _applicationId = applicationId;
         var application = await _applicationsService.GetApplication(_applicationId);
+        if (application == null)
+            return;
         Description = application.Description;
-        Comment = application?.Comment[0].ToString().ToUpper() + application?.Comment.Substring(1);
+        Comment = application?.Comment?[0].ToString().ToUpper() + application?.Comment?.Substring(1);
         Status = application?.Status;
         Executors = await _applicationsService.GetExecutors();
     }
