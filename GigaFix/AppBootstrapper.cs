@@ -35,7 +35,7 @@ namespace GigaFix
             services.AddScoped<OrdersListViewModel>();
             services.AddScoped<AddOrderViewModel>();
             services.AddScoped<StatisticViewModel>();
-            services.AddScoped<MainViewModel>();
+            services.AddTransient<MainViewModel>();
             services.AddScoped<MainWindowViewModel>();
             IServiceProvider container = services.BuildServiceProvider();
             container.UseMicrosoftDependencyResolver();

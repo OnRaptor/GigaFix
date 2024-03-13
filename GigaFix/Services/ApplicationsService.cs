@@ -44,6 +44,8 @@ public class ApplicationsService
     
     public async Task<string> CreateApplication(
         string equipment,
+        int number,
+        int cost,
         int equipmentTypeId,
         int problemTypeId,
         string status,
@@ -57,11 +59,13 @@ public class ApplicationsService
             IdTypeEquipment = equipmentTypeId,
             IdTypeProblem = problemTypeId,
             Status = status,
+            WorkStatus = "Не выполнено",
             NameClient = clientFio,
             Description = description,
             IdEmployee = employeeId,
             DateAddition = DateOnly.FromDateTime(DateTime.Now),
-            Number = new Random().Next(1, 99999)
+            Number = number,
+            Cost = cost
         };
         try
         {
@@ -81,6 +85,7 @@ public class ApplicationsService
         string? comment,
         string? description,
         string? status,
+        string? workStatus,
         TimeSpan? workTime,
         User? executor
         )
@@ -93,10 +98,13 @@ public class ApplicationsService
         application.Entity.Comment = comment ?? application.Entity.Comment;
         application.Entity.Description = description ?? application.Entity.Description;
         application.Entity.Status = status ?? application.Entity.Status;
+        application.Entity.WorkStatus = workStatus ?? application.Entity.WorkStatus;
         if (workTime!= null)
             application.Entity.TimeWork = TimeOnly.FromTimeSpan(workTime.Value);
         if (executor!= null)
             application.Entity.IdEmployee = executor.IdUser;
+        if (workStatus == "Выполнено")
+            application.Entity.DateEnd = DateOnly.FromDateTime(DateTime.Now);
         await _appDbContext.SaveChangesAsync();
         return "Заявка обновлена";
     }

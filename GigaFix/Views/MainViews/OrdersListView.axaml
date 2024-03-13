@@ -54,7 +54,7 @@
                                 </StackPanel>
                                 <StackPanel Spacing="5" Orientation="Horizontal">
                                     <i:Icon FontSize="16" Value="mdi-progress-wrench"/>
-                                    <TextBlock FontSize="13" Text="{Binding Status}"/>
+                                    <TextBlock FontSize="13" Text="{Binding WorkStatus}"/>
                                     <i:Icon FontSize="16" Value="mdi-alert"/>
                                     <TextBlock FontSize="13" Text="{Binding IdTypeProblemNavigation.Name}"/>
                                 </StackPanel>

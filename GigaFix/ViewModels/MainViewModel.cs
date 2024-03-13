@@ -13,11 +13,12 @@ using SukiUI.Controls;
 
 namespace GigaFix.ViewModels
 {
-    public partial class MainViewModel : PageViewModel
+    public partial class MainViewModel : PageViewModel, IDisposable
     {
         public override string Title => "Главный экран";
         public List<PageViewModel> Views { get; set; } = new ();
         [ObservableProperty] private string userName; 
+        public bool IsDispatcher { get; set; }
         
         [ObservableProperty]
         private object selectedView;
@@ -36,12 +37,22 @@ namespace GigaFix.ViewModels
             )
         {
             Views.Add(ordersListViewModel);
-            Views.Add(addOrderViewModel);
-            Views.Add(statisticViewModel);
+            if (authService.IsDispatcher)
+            {
+                Views.Add(addOrderViewModel);
+                Views.Add(statisticViewModel);
+            }
+
+            IsDispatcher = authService.IsDispatcher;
             _navigationService = navigationService;
             _loginViewModel = loginViewModel;
             _notificationViewModel = notificationsViewModel;
             userName = authService.AuthenticatedUserName;
+        }
+
+        public void Dispose()
+        {
+            
         }
 
         partial void OnSelectedViewChanged(object view)
@@ -58,6 +69,7 @@ namespace GigaFix.ViewModels
         public void SignOut()
         {
             _navigationService.Navigate(_loginViewModel);
+            this.Dispose();
         }
 
         public void OpenNotifications()

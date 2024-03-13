@@ -11,6 +11,8 @@
     <controls:GlassCard HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center">
         <StackPanel Spacing="5" MinWidth="350" MaxWidth="350">
             <TextBox Text="{Binding EquipmentName,Mode=TwoWay}" Padding="0" Margin="0" HorizontalAlignment="Stretch" Watermark="Оборудование, которое требует ремонта"/>
+            <TextBox Text="{Binding Number,Mode=TwoWay}" Padding="0" Margin="0" HorizontalAlignment="Stretch" Watermark="Серийный номер"/>
+            <TextBox Text="{Binding Cost,Mode=TwoWay}" Padding="0" Margin="0" HorizontalAlignment="Stretch" Watermark="Стоимость"/>
             <TextBlock Margin="5,0" Text="Тип оборудования"/>
             <ComboBox SelectedValue="{Binding TypeEquipment, Mode=TwoWay}" DisplayMemberBinding="{Binding Name}" ItemsSource="{Binding TypeEquipments}" Padding="0" Margin="0" HorizontalAlignment="Stretch"/>
             <TextBlock Margin="5,0" Text="Тип проблемы"/>

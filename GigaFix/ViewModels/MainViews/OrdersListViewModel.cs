@@ -33,8 +33,6 @@ public partial class OrdersListViewModel : PageViewModel
     {
         if (Filter == "Не выбрано" || string.IsNullOrEmpty(Filter))
             return;
-        if (Orders.Count == 0)
-            Orders.AddRange(_cachedOrders);
         var ord = Orders
             .ToList().Where(x => x.WorkStatus != null && x.WorkStatus.Equals(Filter, StringComparison.OrdinalIgnoreCase));
         Orders.Clear();
@@ -45,8 +43,6 @@ public partial class OrdersListViewModel : PageViewModel
     {
         if (string.IsNullOrWhiteSpace(SearchText))
             return;
-        if (Orders.Count == 0)
-            Orders.AddRange(_cachedOrders);
         var ord = Orders
             .ToList()
             .Where(x => (x.Number + " " + x.Description).Contains(SearchText, StringComparison.OrdinalIgnoreCase));
@@ -55,6 +51,8 @@ public partial class OrdersListViewModel : PageViewModel
     }
     async partial void OnSearchTextChanged(string? text)
     {
+        Orders.Clear();
+        Orders.AddRange(_cachedOrders);
         if (string.IsNullOrWhiteSpace(text))
         {
             Orders.Clear();
@@ -69,14 +67,15 @@ public partial class OrdersListViewModel : PageViewModel
 
     async partial void OnFilterChanged(string? text)
     {
+        Orders.Clear();
+        Orders.AddRange(_cachedOrders);
         if (text != "Не выбрано")
         {
             ApplyFilter();
         }
         else
         {
-            Orders.Clear();
-            Orders.AddRange(_cachedOrders);
+            
             ApplySearch();
         }
     }

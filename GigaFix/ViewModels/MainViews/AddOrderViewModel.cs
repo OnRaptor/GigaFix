@@ -16,6 +16,8 @@ public partial class AddOrderViewModel : PageViewModel
     [ObservableProperty] private IEnumerable<TypeEquipment> typeEquipments;
     [ObservableProperty] private IEnumerable<TypeProblem> typeProblems;
     [ObservableProperty] private IEnumerable<User> executors;
+    [ObservableProperty] private int? number = null;
+    [ObservableProperty] private int? cost = null;
     [ObservableProperty] private string equipmentName;
     [ObservableProperty] private string clientFio;
     [ObservableProperty] private string description;
@@ -45,6 +47,8 @@ public partial class AddOrderViewModel : PageViewModel
         {
             var r = await _applicationsService.CreateApplication(
                 EquipmentName,
+                Number.Value,
+                Cost.Value,
                 TypeEquipment.IdTypeEquipment,
                 TypeEquipment.IdTypeEquipment,
                 Status,

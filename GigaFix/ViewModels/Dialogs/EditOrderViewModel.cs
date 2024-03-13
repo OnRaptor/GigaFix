@@ -15,6 +15,7 @@ public partial class EditOrderViewModel : ViewModelBase
     [ObservableProperty] private string? description;
     [ObservableProperty] private string? comment;
     [ObservableProperty] private string? status;
+    [ObservableProperty] private string? workStatus;
     [ObservableProperty] private TimeSpan? workTime;
     [ObservableProperty] private User? executor;
     [ObservableProperty] private IEnumerable<User>? executors;
@@ -38,8 +39,9 @@ public partial class EditOrderViewModel : ViewModelBase
         if (application == null)
             return;
         Description = application.Description;
-        Comment = application?.Comment?[0].ToString().ToUpper() + application?.Comment?.Substring(1);
-        Status = application?.Status;
+        Comment = application?.Comment;
+        Status = application?.Status?[0].ToString().ToUpper() + application?.Status?.Substring(1);
+        WorkStatus = application?.WorkStatus?[0].ToString().ToUpper() + application?.Comment?.Substring(1);
         Executors = await _applicationsService.GetExecutors();
     }
     public async void Save()
@@ -49,6 +51,7 @@ public partial class EditOrderViewModel : ViewModelBase
             Comment,
             Description,
             Status,
+            WorkStatus,
             WorkTime,
             Executor);
         SukiHost.CloseDialog();
