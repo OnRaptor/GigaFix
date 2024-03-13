@@ -26,9 +26,12 @@ public partial class StatisticViewModel : PageViewModel
 
     public override Action? OnNavigate => async () =>
     {
-        CompletedApplicationsCount  = await _dbContext.Database.SqlQueryRaw<int>("select count(*) from application where status = 'выполнено';").FirstOrDefaultAsync();
+        CompletedApplicationsCount  = await _dbContext.Database.SqlQueryRaw<int>(
+            "select count(*) from application where status = 'выполнено';").FirstOrDefaultAsync();
         AvarageApplicationsWorkTime = await _dbContext.Database.SqlQueryRaw<int>(
-            "select * from application;\nselect sec_to_time(avg(time_to_sec(time_work))) as avgtime from application where status = 'выполнено';").FirstOrDefaultAsync();
+            "select sec_to_time(avg(time_to_sec(time_work))) as avgtime from application where status = 'выполнено';")
+            .FirstOrDefaultAsync();
+        
     };
     
 }

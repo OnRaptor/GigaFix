@@ -41,7 +41,7 @@ public partial class EditOrderViewModel : ViewModelBase
         Description = application.Description;
         Comment = application?.Comment;
         Status = application?.Status?[0].ToString().ToUpper() + application?.Status?.Substring(1);
-        WorkStatus = application?.WorkStatus?[0].ToString().ToUpper() + application?.Comment?.Substring(1);
+        WorkStatus = application?.WorkStatus?[0].ToString().ToUpper() + application?.WorkStatus?.Substring(1);
         Executors = await _applicationsService.GetExecutors();
     }
     public async void Save()

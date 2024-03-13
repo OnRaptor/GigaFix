@@ -4,11 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:GigaFix.ViewModels.MainViews"
+             x:DataType="vm:StatisticViewModel"
              x:Class="GigaFix.Views.MainViews.StatisticView">
     <controls:GlassCard HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center">
         <StackPanel Spacing="5">
-            <TextBlock Text="Количество выполненных заявок:15"/>
-            <TextBlock Text="Среднее время выполнения заявки:2 часа"/>
+            <TextBlock Text="{Binding  StringFormat=Количество выполненных заявок:{0}, Path=CompletedApplicationsCount}"/>
+            <TextBlock Text="{Binding  StringFormat=Среднее время выполнения заявки:{0}, Path=AvarageApplicationsWorkTime}"/>
             <TextBlock Text="Статистика по типам неисправностей:"/>
             <DataGrid
                 >
