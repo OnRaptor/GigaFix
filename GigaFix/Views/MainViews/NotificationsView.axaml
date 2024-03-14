@@ -4,48 +4,41 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:GigaFix.ViewModels.MainViews"
+             xmlns:i="https://github.com/projektanker/icons.avalonia"           
              xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:DataType="vm:NotificationsViewModel"
              x:Class="GigaFix.Views.MainViews.NotificationsView">
     <StackPanel Margin="0, 5" Spacing="10" MinWidth="400" MaxWidth="450" HorizontalAlignment="Center">
         <controls:GlassCard Padding="5">
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <ComboBox PlaceholderText="Фильтр">
+                <!--<ComboBox PlaceholderText="Фильтр">
                     <ComboBoxItem>Все</ComboBoxItem>
                     <ComboBoxItem>Завершеные</ComboBoxItem>
                 </ComboBox>
                 <ComboBox PlaceholderText="Сортировка">
                     <ComboBoxItem>Новые</ComboBoxItem>
                     <ComboBoxItem>Старые</ComboBoxItem>
-                </ComboBox>
-                <Button Height="36" Padding="10, 0">Очистить все</Button>
+                </ComboBox>-->
+                <Button Command="{Binding DeleteAll}" Height="36" Padding="10, 0">Очистить все</Button>
             </StackPanel>
         </controls:GlassCard>
-        <controls:GlassCard>
-            <DockPanel LastChildFill="True">
-                <Button DockPanel.Dock="Right">
-                    Перейти
-                </Button>
-                <TextBlock VerticalAlignment="Center" Text="Изменен статус у заявки #2"></TextBlock>
-            </DockPanel>
-        </controls:GlassCard>
-        
-        <controls:GlassCard>
-            <DockPanel LastChildFill="True">
-                <Button DockPanel.Dock="Right">
-                    Перейти
-                </Button>
-                <TextBlock VerticalAlignment="Center" Text="Изменен исполнитель у заявки #3"></TextBlock>
-            </DockPanel>
-        </controls:GlassCard>
-        
-        <controls:GlassCard>
-            <DockPanel LastChildFill="True">
-                <Button DockPanel.Dock="Right">
-                    Перейти
-                </Button>
-                <TextBlock VerticalAlignment="Center" Text="Завершена заявка #5"></TextBlock>
-            </DockPanel>
-        </controls:GlassCard>
+        <ScrollViewer>
+            <ItemsControl ItemsSource="{Binding Notifications}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="vm:NotifItem">
+                        <controls:GlassCard Margin="0, 5">
+                            <DockPanel LastChildFill="True">
+                                <Button Command="{Binding
+                                $parent[ItemsControl].((vm:NotificationsViewModel)DataContext).Delete}"
+                                        CommandParameter="{Binding id}" Margin="5,5" Padding="5" DockPanel.Dock="Right">
+                                    <i:Icon Foreground="Coral" Value="mdi-close"></i:Icon>
+                                </Button>
+                                <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding message}"></TextBlock>
+                            </DockPanel>
+                        </controls:GlassCard>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </StackPanel>
 </UserControl>

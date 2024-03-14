@@ -12,10 +12,12 @@ public class ApplicationsService
 {
     private readonly ILogger<ApplicationsService> _logger;
     private readonly AppDbContext _appDbContext;
-    public ApplicationsService(AppDbContext appDbContext, ILogger<ApplicationsService> logger)
+    private readonly NotificationsService _notificationsService;
+    public ApplicationsService(AppDbContext appDbContext, ILogger<ApplicationsService> logger, NotificationsService notificationsService)
     {
         _appDbContext = appDbContext;
         _logger = logger;
+        _notificationsService = notificationsService;
     }
 
     public async Task<IEnumerable<Application>> GetApplications()
@@ -93,6 +95,9 @@ public class ApplicationsService
         var t = await GetApplication(applicationId);
         if (t == null)
             return "Заявка не найдена";
+        
+        if (t.WorkStatus != workStatus)
+            await _notificationsService.PushNotification($"Статус заявки [{t.IdApplication}] изменен с [{t.WorkStatus}] на [{workStatus}]");
         
         var application = _appDbContext.Applications.Update(t);
         application.Entity.Comment = comment ?? application.Entity.Comment;

@@ -10,6 +10,7 @@ namespace GigaFix.Services;
 public class AuthService
 {
     public string AuthenticatedUserName { get; set; }
+    public int AuthenticatedUserId { get; set; }
     public bool IsDispatcher { get; set; }
     
     private readonly AppDbContext _dbContext;
@@ -26,6 +27,7 @@ public class AuthService
             .FirstOrDefaultAsync();
         if (res != null)
         {
+            AuthenticatedUserId = res.IdUser;
             AuthenticatedUserName = res.FullnameUser ?? "Гость";
             AuthenticatedUserName = AuthenticatedUserName.Split(' ')[0] + " " 
                                     + string.Join(".", 

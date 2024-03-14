@@ -10,7 +10,7 @@ public partial class Notification
     public string Message { get; set; } = null!;
 
     public int? ApplicationId { get; set; }
-
+    
     public int Id { get; set; }
 
     public virtual Application? Application { get; set; }

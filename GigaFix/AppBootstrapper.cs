@@ -23,10 +23,11 @@ namespace GigaFix
             ServiceCollection services = new ServiceCollection();
             services.UseMicrosoftDependencyResolver();
             services.AddLogging(builder => builder.AddDebug().AddConsole());
-            services.AddDbContext<AppDbContext>(ServiceLifetime.Singleton);
+            services.AddDbContext<AppDbContext>(ServiceLifetime.Transient);
             services.AddSingleton<NavigationService>();
             services.AddSingleton<AuthService>();
             services.AddSingleton<ApplicationsService>();
+            services.AddSingleton<NotificationsService>();
             services.AddScoped<LoginViewModel>();
             services.AddScoped<RegisterViewModel>();
             services.AddScoped<AttachExecutorViewModel>();
@@ -34,7 +35,7 @@ namespace GigaFix
             services.AddScoped<NotificationsViewModel>();
             services.AddScoped<OrdersListViewModel>();
             services.AddScoped<AddOrderViewModel>();
-            services.AddScoped<StatisticViewModel>();
+            services.AddTransient<StatisticViewModel>();
             services.AddTransient<MainViewModel>();
             services.AddScoped<MainWindowViewModel>();
             IServiceProvider container = services.BuildServiceProvider();
