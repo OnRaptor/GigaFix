@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GigaFix.Daemons;
 using GigaFix.Data;
 using GigaFix.ViewModels.Dialogs;
 using GigaFix.ViewModels.MainViews;
@@ -32,7 +33,7 @@ namespace GigaFix
             services.AddScoped<RegisterViewModel>();
             services.AddScoped<AttachExecutorViewModel>();
             services.AddScoped<EditOrderViewModel>();
-            services.AddScoped<NotificationsViewModel>();
+            services.AddSingleton<NotificationsViewModel>();
             services.AddScoped<OrdersListViewModel>();
             services.AddScoped<AddOrderViewModel>();
             services.AddTransient<StatisticViewModel>();

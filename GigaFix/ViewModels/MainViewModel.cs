@@ -69,6 +69,7 @@ namespace GigaFix.ViewModels
         public void SignOut()
         {
             _navigationService.Navigate(_loginViewModel);
+            App.GetRequiredService<AuthService>().Logout();
             this.Dispose();
         }
 

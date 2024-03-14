@@ -8,9 +8,9 @@
              xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:DataType="vm:NotificationsViewModel"
              x:Class="GigaFix.Views.MainViews.NotificationsView">
-    <StackPanel Margin="0, 5" Spacing="10" MinWidth="400" MaxWidth="450" HorizontalAlignment="Center">
-        <controls:GlassCard Padding="5">
-            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+    <Grid RowDefinitions="60, *" Margin="0, 5" MinWidth="400" MaxWidth="450" HorizontalAlignment="Center">
+        <controls:GlassCard Padding="5" VerticalAlignment="Center">
+            <DockPanel LastChildFill="False">
                 <!--<ComboBox PlaceholderText="Фильтр">
                     <ComboBoxItem>Все</ComboBoxItem>
                     <ComboBoxItem>Завершеные</ComboBoxItem>
@@ -19,10 +19,11 @@
                     <ComboBoxItem>Новые</ComboBoxItem>
                     <ComboBoxItem>Старые</ComboBoxItem>
                 </ComboBox>-->
-                <Button Command="{Binding DeleteAll}" Height="36" Padding="10, 0">Очистить все</Button>
-            </StackPanel>
+                <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Margin="10,0" Text="{Binding StringFormat=Кол-во уведомлений: {0},Path=Notifications.Count}"/>
+                <Button HorizontalAlignment="Right" DockPanel.Dock="Right" Command="{Binding DeleteAll}" Height="36" Padding="10, 0">Очистить все</Button>
+            </DockPanel>
         </controls:GlassCard>
-        <ScrollViewer>
+        <ScrollViewer Grid.Row="1">
             <ItemsControl ItemsSource="{Binding Notifications}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate x:DataType="vm:NotifItem">
@@ -30,15 +31,18 @@
                             <DockPanel LastChildFill="True">
                                 <Button Command="{Binding
                                 $parent[ItemsControl].((vm:NotificationsViewModel)DataContext).Delete}"
-                                        CommandParameter="{Binding id}" Margin="5,5" Padding="5" DockPanel.Dock="Right">
+                                        CommandParameter="{Binding id}" Height="30" Width="30" Margin="5,5" Padding="5" DockPanel.Dock="Right">
                                     <i:Icon Foreground="Coral" Value="mdi-close"></i:Icon>
                                 </Button>
-                                <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding message}"></TextBlock>
+                                <StackPanel>
+                                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding message}"/>
+                                    <TextBlock FontSize="11" Foreground="DarkGray" HorizontalAlignment="Right" Text="{Binding time}"/>
+                                </StackPanel>
                             </DockPanel>
                         </controls:GlassCard>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-    </StackPanel>
+    </Grid>
 </UserControl>

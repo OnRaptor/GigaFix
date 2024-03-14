@@ -12,6 +12,7 @@ public partial class Notification
     public int? ApplicationId { get; set; }
     
     public int Id { get; set; }
+    public DateTime Timestamp { get; set; }
 
     public virtual Application? Application { get; set; }
 
