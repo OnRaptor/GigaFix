@@ -12,39 +12,41 @@
                  MinWidth="600"
                  MinHeight="500"
                  Title="{Binding WindowTitle}">
-	<suki:SukiWindow.LogoContent>
-		<Image Width="25" Source="/Assets/icon.ico"/>
-	</suki:SukiWindow.LogoContent>
-		<DockPanel LastChildFill="True">
-			<Grid DockPanel.Dock="Top" Height="40" IsVisible="{Binding IsTopPanelVisible}">
-				<Button Classes="Basic" HorizontalAlignment="Left" IsVisible="{Binding CanNavigateBack}" FontSize="9" Command="{Binding NavigateBack}">
-					<!--<PathIcon>
+    <suki:SukiWindow.LogoContent>
+        <Image Width="25" Source="/Assets/icon.ico" />
+    </suki:SukiWindow.LogoContent>
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top" Height="40" IsVisible="{Binding IsTopPanelVisible}">
+            <Button Classes="Basic" HorizontalAlignment="Left" IsVisible="{Binding CanNavigateBack}" FontSize="9"
+                    Command="{Binding NavigateBack}">
+                <!--<PathIcon>
 						<PathIcon.Data>
 							<StreamGeometry>M31.8839 8.36612C32.372 8.85427 32.372 9.64573 31.8839 10.1339L18.0178 24L31.8839 37.8661C32.372 38.3543 32.372 39.1457 31.8839 39.6339C31.3957 40.122 30.6043 40.122 30.1161 39.6339L15.3661 24.8839C14.878 24.3957 14.878 23.6043 15.3661 23.1161L30.1161 8.36612C30.6043 7.87796 31.3957 7.87796 31.8839 8.36612Z</StreamGeometry>
 						</PathIcon.Data>
 					</PathIcon>-->
-					<TextBlock Text="Назад" FontSize="15"/>
-				</Button>
-				<TextBlock Text="{Binding CurrentViewModel.Title}" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-			</Grid>
-			<TransitioningContentControl Content="{Binding CurrentViewModel}">
-				<TransitioningContentControl.PageTransition>
-					<!-- ПРИКОЛ:: <CompositePageTransition> -->
-					<!-- 	<CompositePageTransition.PageTransitions> -->
-					<!-- 		<Rotate3DTransition Duration="0:00:10" Orientation="Horizontal"></Rotate3DTransition> -->
-					<!-- 		<Rotate3DTransition Duration="0:00:10" Orientation="Vertical"></Rotate3DTransition> -->
-					<!-- 		<Rotate3DTransition Duration="0:00:05" Orientation="Vertical"></Rotate3DTransition> -->
-					<!-- 		<Rotate3DTransition Duration="0:00:05" Orientation="Horizontal"></Rotate3DTransition> -->
-					<!-- 		<CompositePageTransition> -->
-					<!-- 			<CompositePageTransition.PageTransitions> -->
-					<!-- 				<Rotate3DTransition Duration="0:00:07" Orientation="Vertical"></Rotate3DTransition> -->
-     <!--                                <Rotate3DTransition Duration="0:00:07" Orientation="Horizontal"></Rotate3DTransition> -->
-					<!-- 			</CompositePageTransition.PageTransitions> -->
-					<!-- 		</CompositePageTransition> -->
-					<!-- 	</CompositePageTransition.PageTransitions> -->
-					<!-- </CompositePageTransition> -->
-					<CrossFade Duration="0:00:00.500"></CrossFade>
-				</TransitioningContentControl.PageTransition>
-			</TransitioningContentControl>
-		</DockPanel>
+                <TextBlock Text="Назад" FontSize="15" />
+            </Button>
+            <TextBlock Text="{Binding CurrentViewModel.Title}" FontSize="24" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+        </Grid>
+        <TransitioningContentControl Content="{Binding CurrentViewModel}">
+            <TransitioningContentControl.PageTransition>
+                <!-- ПРИКОЛ:: <CompositePageTransition> -->
+                <!-- 	<CompositePageTransition.PageTransitions> -->
+                <!-- 		<Rotate3DTransition Duration="0:00:10" Orientation="Horizontal"></Rotate3DTransition> -->
+                <!-- 		<Rotate3DTransition Duration="0:00:10" Orientation="Vertical"></Rotate3DTransition> -->
+                <!-- 		<Rotate3DTransition Duration="0:00:05" Orientation="Vertical"></Rotate3DTransition> -->
+                <!-- 		<Rotate3DTransition Duration="0:00:05" Orientation="Horizontal"></Rotate3DTransition> -->
+                <!-- 		<CompositePageTransition> -->
+                <!-- 			<CompositePageTransition.PageTransitions> -->
+                <!-- 				<Rotate3DTransition Duration="0:00:07" Orientation="Vertical"></Rotate3DTransition> -->
+                <!--                                <Rotate3DTransition Duration="0:00:07" Orientation="Horizontal"></Rotate3DTransition> -->
+                <!-- 			</CompositePageTransition.PageTransitions> -->
+                <!-- 		</CompositePageTransition> -->
+                <!-- 	</CompositePageTransition.PageTransitions> -->
+                <!-- </CompositePageTransition> -->
+                <CrossFade Duration="0:00:00.500" />
+            </TransitioningContentControl.PageTransition>
+        </TransitioningContentControl>
+    </DockPanel>
 </suki:SukiWindow>

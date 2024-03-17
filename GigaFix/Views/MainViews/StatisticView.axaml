@@ -9,9 +9,11 @@
              x:Class="GigaFix.Views.MainViews.StatisticView">
     <controls:GlassCard HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center">
         <StackPanel Spacing="5">
-            <TextBlock Text="{Binding  StringFormat=Количество выполненных заявок:{0}, Path=CompletedApplicationsCount}"/>
-            <TextBlock Text="{Binding  StringFormat=Среднее время выполнения заявки:{0}, Path=AvarageApplicationsWorkTime}"/>
-            <TextBlock Text="Статистика по типам неисправностей:"/>
+            <TextBlock
+                Text="{Binding  StringFormat=Количество выполненных заявок:{0}, Path=CompletedApplicationsCount}" />
+            <TextBlock
+                Text="{Binding  StringFormat=Среднее время выполнения заявки:{0}, Path=AvarageApplicationsWorkTime}" />
+            <TextBlock Text="Статистика по типам неисправностей:" />
             <DataGrid
                 ItemsSource="{Binding StatByType}"
                 SelectionMode="Single">
@@ -19,42 +21,42 @@
                     <DataGridTemplateColumn Header="Тип">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Type}"/>
+                                <TextBlock Text="{Binding Type}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="Количество">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Count}"/>
+                                <TextBlock Text="{Binding Count}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="Выполненных">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding CompletedCount}"/>
+                                <TextBlock Text="{Binding CompletedCount}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="В ожидании">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding WaitingCount}"/>
+                                <TextBlock Text="{Binding WaitingCount}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="В работе">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding WorkingCount}"/>
+                                <TextBlock Text="{Binding WorkingCount}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="Среднее время выполнения">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding AvgTime}"/>
+                                <TextBlock Text="{Binding AvgTime}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

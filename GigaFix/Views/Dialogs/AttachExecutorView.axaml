@@ -4,48 +4,47 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:GigaFix.ViewModels.Dialogs"
-             xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:DataType="vm:AttachExecutorViewModel"
              x:Class="GigaFix.Views.Dialogs.AttachExecutorView">
     <Grid MaxWidth="400" MaxHeight="400" RowDefinitions="40, *">
-        <TextBox Watermark="Поиск исполнителя"/>
+        <TextBox Watermark="Поиск исполнителя" />
         <ScrollViewer Grid.Row="1">
             <ItemsControl>
                 <DockPanel Margin="10, 5" LastChildFill="True">
                     <Button DockPanel.Dock="Right">Выбрать</Button>
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Аким Мустафаев"/>
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Аким Мустафаев" />
                 </DockPanel>
                 <DockPanel Margin="10, 5" LastChildFill="True">
                     <Button DockPanel.Dock="Right">Выбрать</Button>
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Иилья Новиков"/>
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Иилья Новиков" />
                 </DockPanel>
                 <DockPanel Margin="10, 5" LastChildFill="True">
                     <Button DockPanel.Dock="Right">Выбрать</Button>
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Диаз Баянов"/>
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Диаз Баянов" />
                 </DockPanel>
                 <DockPanel Margin="10, 5" LastChildFill="True">
                     <Button DockPanel.Dock="Right">Выбрать</Button>
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников"/>
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников" />
                 </DockPanel>
                 <DockPanel Margin="10, 5" LastChildFill="True">
                     <Button DockPanel.Dock="Right">Выбрать</Button>
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников"/>
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников" />
                 </DockPanel>
                 <DockPanel Margin="10, 5" LastChildFill="True">
                     <Button DockPanel.Dock="Right">Выбрать</Button>
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников"/>
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников" />
                 </DockPanel>
                 <DockPanel Margin="10, 5" LastChildFill="True">
                     <Button DockPanel.Dock="Right">Выбрать</Button>
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников"/>
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников" />
                 </DockPanel>
                 <DockPanel Margin="10, 5" LastChildFill="True">
                     <Button DockPanel.Dock="Right">Выбрать</Button>
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников"/>
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников" />
                 </DockPanel>
                 <DockPanel Margin="10, 5" LastChildFill="True">
                     <Button DockPanel.Dock="Right">Выбрать</Button>
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников"/>
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,20,0" Text="Роман Красильников" />
                 </DockPanel>
             </ItemsControl>
         </ScrollViewer>

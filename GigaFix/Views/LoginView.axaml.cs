@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace GigaFix.Views
+namespace GigaFix.Views;
+
+public partial class LoginView : UserControl
 {
-    public partial class LoginView : UserControl
+    public LoginView()
     {
-        public LoginView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,17 +15,25 @@ public partial class OrdersListViewModel : PageViewModel
 {
     public override string Title => "Список заявок";
     public override string IconName => "mdi-list-box";
-    public ObservableCollection<Application> Orders { get; set; } = new ();
+    public ObservableCollection<Application> Orders { get; set; } = new();
     [ObservableProperty] private string searchText;
     [ObservableProperty] private string filter;
-    
+
     private readonly ApplicationsService _applicationsService;
     private List<Application> _cachedOrders;
+
     public OrdersListViewModel(
         ApplicationsService applicationsService
-        )
+    )
     {
         _applicationsService = applicationsService;
+    }
+
+    private void ApplySort()
+    {
+        var t = new ObservableCollection<Application>(Orders.OrderByDescending(a => a.DateAddition));
+        Orders.Clear();
+        Orders.AddRange(t);
     }
 
     private void ApplyFilter()
@@ -34,7 +41,8 @@ public partial class OrdersListViewModel : PageViewModel
         if (Filter == "Не выбрано" || string.IsNullOrEmpty(Filter))
             return;
         var ord = Orders
-            .ToList().Where(x => x.WorkStatus != null && x.WorkStatus.Equals(Filter, StringComparison.OrdinalIgnoreCase));
+            .ToList().Where(
+                x => x.WorkStatus != null && x.WorkStatus.Equals(Filter, StringComparison.OrdinalIgnoreCase));
         Orders.Clear();
         Orders.Add(ord);
     }
@@ -49,7 +57,8 @@ public partial class OrdersListViewModel : PageViewModel
         Orders.Clear();
         Orders.AddRange(ord);
     }
-    async partial void OnSearchTextChanged(string? text)
+
+    partial void OnSearchTextChanged(string? text)
     {
         Orders.Clear();
         Orders.AddRange(_cachedOrders);
@@ -60,9 +69,10 @@ public partial class OrdersListViewModel : PageViewModel
             ApplyFilter();
             return;
         }
-        
+
         ApplyFilter();
         ApplySearch();
+        ApplySort();
     }
 
     async partial void OnFilterChanged(string? text)
@@ -70,27 +80,25 @@ public partial class OrdersListViewModel : PageViewModel
         Orders.Clear();
         Orders.AddRange(_cachedOrders);
         if (text != "Не выбрано")
-        {
             ApplyFilter();
-        }
         else
-        {
-            
             ApplySearch();
-        }
+        ApplySort();
     }
+
     public override Action? OnNavigate =>
         async () =>
         {
             Orders.Clear();
             Orders.AddRange(new ObservableCollection<Application>(await _applicationsService.GetApplications()));
+            ApplySort();
             _cachedOrders = Orders.ToList();
         };
 
     public void ShowEditDialog(int applicationId)
     {
         var vm = App.GetRequiredService<EditOrderViewModel>();
-        vm.Init(applicationId);
-        SukiHost.ShowDialog(vm, allowBackgroundClose:true);
+        vm.Init(applicationId, this);
+        SukiHost.ShowDialog(vm, allowBackgroundClose: true);
     }
 }

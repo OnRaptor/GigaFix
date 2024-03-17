@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
-             xmlns:i="https://github.com/projektanker/icons.avalonia"            
+             xmlns:i="https://github.com/projektanker/icons.avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:GigaFix.ViewModels"
              x:DataType="vm:MainViewModel"
@@ -19,7 +19,10 @@
             <suki:GlassCard Margin="0,0,0,20" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
                 <Expander Header="{Binding UserName}" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
                     <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Spacing="5">
-                        <Button IsVisible="{Binding IsDispatcher}" Command="{Binding OpenNotifications}" Classes="Basic">Уведомления</Button>
+                        <Button IsVisible="{Binding IsDispatcher}" Command="{Binding OpenNotifications}"
+                                Classes="Basic">
+                            Уведомления
+                        </Button>
                         <Button Command="{Binding SignOut}" Classes="Basic">Выйти</Button>
                     </StackPanel>
                 </Expander>

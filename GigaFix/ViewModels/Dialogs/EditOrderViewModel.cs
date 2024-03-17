@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using GigaFix.Data;
 using GigaFix.Services;
@@ -22,19 +20,22 @@ public partial class EditOrderViewModel : ViewModelBase
 
     public bool IsDispatcher => _authService.IsDispatcher;
     public bool IsExecutor => !_authService.IsDispatcher;
-    
+
     private int _applicationId;
     private readonly AuthService _authService;
     private readonly ApplicationsService _applicationsService;
+    private PageViewModel? _callbackVm;
+
     public EditOrderViewModel(AuthService authService, ApplicationsService applicationsService)
     {
         _authService = authService;
         _applicationsService = applicationsService;
     }
 
-    public async void Init(int applicationId)
+    public async void Init(int applicationId, PageViewModel? callbackVm = null)
     {
         _applicationId = applicationId;
+        _callbackVm = callbackVm;
         var application = await _applicationsService.GetApplication(_applicationId);
         if (application == null)
             return;
@@ -44,6 +45,7 @@ public partial class EditOrderViewModel : ViewModelBase
         WorkStatus = application?.WorkStatus?[0].ToString().ToUpper() + application?.WorkStatus?.Substring(1);
         Executors = await _applicationsService.GetExecutors();
     }
+
     public async void Save()
     {
         var res = await _applicationsService.EditApplication(
@@ -56,6 +58,7 @@ public partial class EditOrderViewModel : ViewModelBase
             Executor);
         SukiHost.CloseDialog();
         await SukiHost.ShowToast("Результат", res);
-        App.GetRequiredService<OrdersListViewModel>().OnNavigate();
+        if (_callbackVm != null)
+            _callbackVm.OnNavigate();
     }
 }

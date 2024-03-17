@@ -20,17 +20,19 @@ public class NotificationsPullerDaemon
         {
             if (ct.IsCancellationRequested)
                 break;
-            
+
             logger.LogInformation("Pulling new notifications");
             var message = await notificationsService.PullNewMessage();
             if (message != null)
             {
-                await Dispatcher.UIThread.InvokeAsync(async () => await App.GetRequiredService<NotificationsViewModel>().PullLast());
+                await Dispatcher.UIThread.InvokeAsync(async () =>
+                    await App.GetRequiredService<NotificationsViewModel>().PullLast());
                 await Dispatcher.UIThread.InvokeAsync(() => SukiHost.ShowToast("Уведомление о заявке", message));
             }
 
             await Task.Delay(3000);
         }
+
         logger.LogInformation("Daemon stopped via cancellation");
     }
 }

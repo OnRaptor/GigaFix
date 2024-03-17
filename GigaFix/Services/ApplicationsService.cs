@@ -13,7 +13,9 @@ public class ApplicationsService
     private readonly ILogger<ApplicationsService> _logger;
     private readonly AppDbContext _appDbContext;
     private readonly NotificationsService _notificationsService;
-    public ApplicationsService(AppDbContext appDbContext, ILogger<ApplicationsService> logger, NotificationsService notificationsService)
+
+    public ApplicationsService(AppDbContext appDbContext, ILogger<ApplicationsService> logger,
+        NotificationsService notificationsService)
     {
         _appDbContext = appDbContext;
         _logger = logger;
@@ -32,18 +34,26 @@ public class ApplicationsService
         return applications;
     }
 
-    public async Task<Application?> GetApplication(int applicationId) =>
-        await _appDbContext.Applications.FindAsync(applicationId);
-    
-    public async Task<IEnumerable<TypeEquipment>> GetEquipmentTypes() =>
-        await _appDbContext.TypeEquipments.AsNoTracking().ToListAsync();
-    
-    public async Task<IEnumerable<TypeProblem>> GetProblemTypes() =>
-        await _appDbContext.TypeProblems.AsNoTracking().ToListAsync();
-    
-    public async Task<IEnumerable<User>> GetExecutors() =>
-        await _appDbContext.Users.AsNoTracking().Where(o => o.Role.ToLower() == "исполнитель").ToListAsync();
-    
+    public async Task<Application?> GetApplication(int applicationId)
+    {
+        return await _appDbContext.Applications.FindAsync(applicationId);
+    }
+
+    public async Task<IEnumerable<TypeEquipment>> GetEquipmentTypes()
+    {
+        return await _appDbContext.TypeEquipments.AsNoTracking().ToListAsync();
+    }
+
+    public async Task<IEnumerable<TypeProblem>> GetProblemTypes()
+    {
+        return await _appDbContext.TypeProblems.AsNoTracking().ToListAsync();
+    }
+
+    public async Task<IEnumerable<User>> GetExecutors()
+    {
+        return await _appDbContext.Users.AsNoTracking().Where(o => o.Role.ToLower() == "исполнитель").ToListAsync();
+    }
+
     public async Task<string> CreateApplication(
         string equipment,
         int number,
@@ -90,23 +100,24 @@ public class ApplicationsService
         string? workStatus,
         TimeSpan? workTime,
         User? executor
-        )
+    )
     {
         var t = await GetApplication(applicationId);
         if (t == null)
             return "Заявка не найдена";
-        
+
         if (t.WorkStatus != workStatus)
-            await _notificationsService.PushNotification($"Статус заявки [{t.IdApplication}] изменен с [{t.WorkStatus}] на [{workStatus}]");
-        
+            await _notificationsService.PushNotification(
+                $"Статус заявки [{t.IdApplication}] изменен с [{t.WorkStatus}] на [{workStatus}]");
+
         var application = _appDbContext.Applications.Update(t);
         application.Entity.Comment = comment ?? application.Entity.Comment;
         application.Entity.Description = description ?? application.Entity.Description;
         application.Entity.Status = status ?? application.Entity.Status;
         application.Entity.WorkStatus = workStatus ?? application.Entity.WorkStatus;
-        if (workTime!= null)
+        if (workTime != null)
             application.Entity.TimeWork = TimeOnly.FromTimeSpan(workTime.Value);
-        if (executor!= null)
+        if (executor != null)
             application.Entity.IdEmployee = executor.IdUser;
         if (workStatus == "Выполнено")
             application.Entity.DateEnd = DateOnly.FromDateTime(DateTime.Now);

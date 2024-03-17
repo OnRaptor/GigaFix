@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace GigaFix.Data;
 
@@ -10,7 +9,7 @@ public partial class Notification
     public string Message { get; set; } = null!;
 
     public int? ApplicationId { get; set; }
-    
+
     public int Id { get; set; }
     public DateTime Timestamp { get; set; }
 

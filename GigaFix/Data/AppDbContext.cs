@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using GigaFix.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -19,6 +16,7 @@ public partial class AppDbContext : DbContext
             "server=localhost;user=root;password=root;database=demo_ekz;",
             new MySqlServerVersion(new Version(8, 0, 36)));
     }
+
     public virtual DbSet<Application> Applications { get; set; }
 
     public virtual DbSet<Notification> Notifications { get; set; }

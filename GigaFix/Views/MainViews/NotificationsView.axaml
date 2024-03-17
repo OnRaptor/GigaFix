@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:GigaFix.ViewModels.MainViews"
-             xmlns:i="https://github.com/projektanker/icons.avalonia"           
+             xmlns:i="https://github.com/projektanker/icons.avalonia"
              xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:DataType="vm:NotificationsViewModel"
              x:Class="GigaFix.Views.MainViews.NotificationsView">
@@ -19,8 +19,12 @@
                     <ComboBoxItem>Новые</ComboBoxItem>
                     <ComboBoxItem>Старые</ComboBoxItem>
                 </ComboBox>-->
-                <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Margin="10,0" Text="{Binding StringFormat=Кол-во уведомлений: {0},Path=Notifications.Count}"/>
-                <Button HorizontalAlignment="Right" DockPanel.Dock="Right" Command="{Binding DeleteAll}" Height="36" Padding="10, 0">Очистить все</Button>
+                <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Margin="10,0"
+                           Text="{Binding StringFormat=Кол-во уведомлений: {0},Path=Notifications.Count}" />
+                <Button HorizontalAlignment="Right" DockPanel.Dock="Right" Command="{Binding DeleteAll}" Height="36"
+                        Padding="10, 0">
+                    Очистить все
+                </Button>
             </DockPanel>
         </controls:GlassCard>
         <ScrollViewer Grid.Row="1">
@@ -29,14 +33,17 @@
                     <DataTemplate x:DataType="vm:NotifItem">
                         <controls:GlassCard Margin="0, 5">
                             <DockPanel LastChildFill="True">
-                                <Button Command="{Binding
+                                <Button
+                                    Command="{Binding
                                 $parent[ItemsControl].((vm:NotificationsViewModel)DataContext).Delete}"
-                                        CommandParameter="{Binding id}" Height="30" Width="30" Margin="5,5" Padding="5" DockPanel.Dock="Right">
-                                    <i:Icon Foreground="Coral" Value="mdi-close"></i:Icon>
+                                    CommandParameter="{Binding id}" Height="30" Width="30" Margin="5,5" Padding="5"
+                                    DockPanel.Dock="Right">
+                                    <i:Icon Foreground="Coral" Value="mdi-close" />
                                 </Button>
                                 <StackPanel>
-                                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding message}"/>
-                                    <TextBlock FontSize="11" Foreground="DarkGray" HorizontalAlignment="Right" Text="{Binding time}"/>
+                                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding message}" />
+                                    <TextBlock FontSize="11" Foreground="DarkGray" HorizontalAlignment="Right"
+                                               Text="{Binding time}" />
                                 </StackPanel>
                             </DockPanel>
                         </controls:GlassCard>

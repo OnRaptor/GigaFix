@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.JavaScript;
 using System.Threading.Tasks;
 using GigaFix.Data;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +11,11 @@ namespace GigaFix.Services;
 public class NotificationsService
 {
     private DateTime _currentTimeStamp = DateTime.UtcNow;
-    
+
     private readonly ILogger<NotificationsService> _logger;
     private readonly AppDbContext _dbContext;
     private readonly AuthService _authService;
+
     public NotificationsService(AppDbContext dbContext, AuthService authService, ILogger<NotificationsService> logger)
     {
         _dbContext = dbContext;
@@ -53,12 +53,12 @@ public class NotificationsService
     public async Task DeleteNotificationForCurrentUser(int id)
     {
         await _dbContext.Notifications
-            .Where(n => 
+            .Where(n =>
                 n.UserId == _authService.AuthenticatedUserId && n.Id == id)
             .ExecuteDeleteAsync();
         _logger.LogInformation("Deleted notification => " + id);
     }
-    
+
     /// <summary>
     /// Возвращает новое уведомление для пользователя
     /// </summary>

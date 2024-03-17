@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using CommunityToolkit.Mvvm.ComponentModel;
 using GigaFix.Data;
 using GigaFix.Services;
-using GigaFix.ViewModels.Dialogs;
 using SukiUI.Controls;
 
 namespace GigaFix.ViewModels.MainViews;
@@ -25,17 +24,18 @@ public partial class AddOrderViewModel : PageViewModel
     [ObservableProperty] private TypeEquipment typeEquipment;
     [ObservableProperty] private TypeProblem typeProblem;
     [ObservableProperty] private User executor;
-    
+
     private readonly ApplicationsService _applicationsService;
+
     public AddOrderViewModel(
         ApplicationsService applicationsService
-        )
+    )
     {
         _applicationsService = applicationsService;
     }
 
     public override Action? OnNavigate => async () =>
-    {   
+    {
         TypeEquipments = await _applicationsService.GetEquipmentTypes();
         TypeProblems = await _applicationsService.GetProblemTypes();
         Executors = await _applicationsService.GetExecutors();
@@ -62,9 +62,4 @@ public partial class AddOrderViewModel : PageViewModel
             await SukiHost.ShowToast("Ошибка", e.Message);
         }
     }
-    
-    /*public void showExecutorDialog()
-    {
-        SukiHost.ShowDialog(_attachExecutorViewModel, allowBackgroundClose:true);
-    }*/
 }

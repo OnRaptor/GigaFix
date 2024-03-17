@@ -8,23 +8,26 @@ using GigaFix.Services;
 using Microsoft.Extensions.Logging;
 
 namespace GigaFix.ViewModels.MainViews;
+
 public record NotifItem(int id, string message, DateTime time);
 
 public partial class NotificationsViewModel : PageViewModel
 {
     public override string Title => "Уведомления";
     public override string IconName => "mdi-bell";
-    [ObservableProperty]private ObservableCollection<NotifItem> notifications = new();
-    
-    
+    [ObservableProperty] private ObservableCollection<NotifItem> notifications = new();
+
+
     private readonly NotificationsService _notificationsService;
+
     public NotificationsViewModel(NotificationsService notificationsService)
     {
         _notificationsService = notificationsService;
         App.GetRequiredService<ILogger<NotificationsViewModel>>().LogInformation("NotificationsViewModel created");
     }
 
-    public override Action? OnNavigate => async () => {
+    public override Action? OnNavigate => async () =>
+    {
         Notifications.Clear();
         var _notifications = await _notificationsService.GetNotificationsForCurrentUser();
         _notifications.Reverse();
@@ -35,7 +38,7 @@ public partial class NotificationsViewModel : PageViewModel
     {
         Notifications.AddOrInsertRange(
             (await _notificationsService.GetNotificationsForCurrentUser())
-            .TakeLast(1).Select(n => new NotifItem(n.Item1, n.Item2, n.Item3)),0);
+            .TakeLast(1).Select(n => new NotifItem(n.Item1, n.Item2, n.Item3)), 0);
     }
 
     public async void DeleteAll()

@@ -7,9 +7,10 @@
              x:DataType="vm:RegisterViewModel"
              x:Class="GigaFix.Views.RegisterView">
     <StackPanel Spacing="6" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBox Watermark="ФИО" HorizontalAlignment="Stretch"/>
-        <TextBox Watermark="Логин" HorizontalAlignment="Stretch"/>
-        <TextBox PasswordChar="*" Watermark="Пароль" HorizontalAlignment="Stretch"/>
-        <Button Command="{Binding Register}" Content="Регистрация" Margin="5, 0" Classes="Rounded Flat" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+        <TextBox Watermark="ФИО" HorizontalAlignment="Stretch" />
+        <TextBox Watermark="Логин" HorizontalAlignment="Stretch" />
+        <TextBox PasswordChar="*" Watermark="Пароль" HorizontalAlignment="Stretch" />
+        <Button Command="{Binding Register}" Content="Регистрация" Margin="5, 0" Classes="Rounded Flat"
+                HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
     </StackPanel>
 </UserControl>

@@ -1,8 +1,5 @@
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using GigaFix.Data;
@@ -17,10 +14,19 @@ public partial class StatisticViewModel : PageViewModel
 
     [ObservableProperty] private int completedApplicationsCount;
     [ObservableProperty] private TimeOnly avarageApplicationsWorkTime;
-    public record StatItem(string Type, int Count, int CompletedCount,int WaitingCount,int WorkingCount, TimeSpan AvgTime);
-    [ObservableProperty] private ObservableCollection<StatItem> statByType = new ();
+
+    public record StatItem(
+        string Type,
+        int Count,
+        int CompletedCount,
+        int WaitingCount,
+        int WorkingCount,
+        TimeSpan AvgTime);
+
+    [ObservableProperty] private ObservableCollection<StatItem> statByType = new();
 
     private readonly AppDbContext _dbContext;
+
     public StatisticViewModel(AppDbContext dbContext)
     {
         _dbContext = dbContext;
@@ -33,12 +39,12 @@ public partial class StatisticViewModel : PageViewModel
                 "select count(*) from application where status = 'выполнено';")
             .ToListAsync()).FirstOrDefault();
         AvarageApplicationsWorkTime = (await _dbContext.Database.SqlQueryRaw<TimeOnly>(
-            "select sec_to_time(avg(time_to_sec(time_work))) as avgtime from application where status = 'выполнено';")
+                "select sec_to_time(avg(time_to_sec(time_work))) as avgtime from application where status = 'выполнено';")
             .ToListAsync()).FirstOrDefault();
-        
+
         using (var command = _dbContext.Database.GetDbConnection().CreateCommand())
         {
-            command.CommandText = 
+            command.CommandText =
                 @"select type_problem.name,
                     count(*),
                     count(if(application.status like ""выполнено"", 1, null)),
@@ -52,7 +58,6 @@ public partial class StatisticViewModel : PageViewModel
             using (var result = command.ExecuteReader())
             {
                 while (result.Read())
-                {
                     StatByType.Add(new StatItem(
                         result.GetString(0),
                         result.GetInt32(1),
@@ -60,9 +65,7 @@ public partial class StatisticViewModel : PageViewModel
                         result.GetInt32(3),
                         result.GetInt32(4),
                         (TimeSpan)result.GetValue(5)));
-                }
             }
         }
     };
-    
 }

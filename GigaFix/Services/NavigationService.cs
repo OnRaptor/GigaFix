@@ -1,18 +1,14 @@
 ﻿using GigaFix.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GigaFix.Services
+namespace GigaFix.Services;
+
+public class NavigationService
 {
-    public class NavigationService
-    {
-        public delegate void SetTopPanelVisibilityDelegate(bool visible);
+    public delegate void SetTopPanelVisibilityDelegate(bool visible);
 
-        public SetTopPanelVisibilityDelegate SetTopPanelVisibility;
-        public delegate void NavDelegate(PageViewModel vm);
-        public NavDelegate Navigate;
-    }
+    public SetTopPanelVisibilityDelegate SetTopPanelVisibility;
+
+    public delegate void NavDelegate(PageViewModel vm);
+
+    public NavDelegate Navigate;
 }
